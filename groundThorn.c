@@ -3,13 +3,14 @@
 #include "functionlist.h"
 
 
-void groundthorn(g* gPtr)
+void groundthorn(g* gPtr,int x,int y)
 {
+
     int i;
     for(i=0;i<50;i++){
-        if (gPtr->barD_y==gPtr->y&& gPtr->barD_x==gPtr->x+i)
+        if (gPtr->barD_y==y&& gPtr->barD_x==x+i)
         {
-            al_draw_bitmap(gPtr->gthorn,gPtr->x,gPtr->y-10,0);
+            al_draw_bitmap(gPtr->gthorn,x,y-10,0);
 
         /*printf("you died\n");
         system("pause");

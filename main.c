@@ -6,6 +6,7 @@
 
 int main( void )
 {
+
     int j,z;//monster var
     g GAME;
     m MONSTER;
@@ -45,16 +46,15 @@ int main( void )
         al_draw_bitmap( GAME.right1, GAME.barD_x,GAME.barD_y, 0);
         al_draw_bitmap( GAME.right2, GAME.barD_x,GAME.barD_y, 0);
         }
+        else
+        al_draw_bitmap( GAME.right1, GAME.barD_x,GAME.barD_y, 0);
+
         if (al_key_down(&GAME.KBstate, ALLEGRO_KEY_LEFT)){
         al_draw_bitmap( GAME.left1, GAME.barD_x,GAME.barD_y, 0);
-        }
-
-        printf("barD_y %d\n",GAME.barD_y);
-         printf("y-10 %d\n",GAME.y-10);
-          printf("barD_x%d\n",GAME.barD_x);
-           printf("x %d\n",GAME.x);
-
         al_draw_bitmap( GAME.left2, GAME.barD_x,GAME.barD_y, 0);
+        }
+        else
+            al_draw_bitmap( GAME.left1, GAME.barD_x,GAME.barD_y, 0);
         //move aming
         moveAming(&GAME);
         //monster
@@ -66,7 +66,8 @@ int main( void )
         al_draw_bitmap(MONSTER.monster,MONSTER.xm,MONSTER.ym,0);
         }
         //
-        groundthorn(&GAME);
+        groundthorn(&GAME,100,440);
+        groundthorn(&GAME,200,440);
        al_rest(0.01);
 
         /* display */

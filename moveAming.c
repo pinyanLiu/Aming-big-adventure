@@ -9,11 +9,9 @@ void moveAming(g* gPtr)
     // if (al_key_down(&KBstate, ALLEGRO_KEY_LEFT)) barD_x -= PADDLE_MOVE;
     if (al_key_down(&gPtr->KBstate, ALLEGRO_KEY_LEFT))
         gPtr->barD_x -= PADDLE_MOVE;
-
     // if (al_key_down(&KBstate, ALLEGRO_KEY_RIGHT)) barD_x += PADDLE_MOVE;
     if (al_key_down(&gPtr->KBstate, ALLEGRO_KEY_RIGHT))
-        gPtr->barD_x += PADDLE_MOVE;
-
+         gPtr->barD_x += PADDLE_MOVE;
     // if(al_key_down(&KBstate, ALLEGRO_KEY_J) && jump)
     if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_J) && gPtr->jump)//JUMP 104
     {
