@@ -8,4 +8,6 @@ void moveAming(g* gPtr);
 void groundthorn(g* gPtr,int,int);
 void invisibleblock(g* gPtr);
 int monster(m*mPtr,g* gPtr);
+void map_display(int a,int i,g* gPtr);
+void map_move(g* gPtr);
 #endif

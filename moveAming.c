@@ -52,9 +52,9 @@ void moveAming(g* gPtr)
         gPtr->barD_x =0; /* make sure the paddles don go off screen */
 
     // if (barD_x > 625)
-    if (gPtr->barD_x > 625)
+    if (gPtr->barD_x > 500)
         // barD_x =620; /* make sure the paddles don go off screen */
-        gPtr->barD_x =620; /* make sure the paddles don go off screen */
+        gPtr->barD_x =500; /* make sure the paddles don go off screen */
 }
 /*void game(struct GAME* gamePtr)
 {
@@ -63,19 +63,21 @@ void moveAming(g* gPtr)
 void gameStructInit(g* gPtr,m*mPtr)
 {
     gPtr->x=100;
-    gPtr->y=440;
+    gPtr->y=350;//起始高度
     gPtr->jump = false;
     gPtr->jumpSpeed = 15;
     gPtr->velX = 0;
     gPtr->velY = 0;
     gPtr->gravity = 1;
-    gPtr->groundHeight = 440;
+    gPtr->groundHeight = 350;//地面高度
     gPtr->brick = NULL;
     gPtr->display = NULL;
-    mPtr->xo=390;//monster will start move while aming is right here
-    mPtr->yo=440;
-    mPtr->xm=630;//location of monster
-    mPtr->ym=430;
+    gPtr->step =0;//地圖顯示需要
+    gPtr->block =0;
+    mPtr->xo=250;//monster will start move while aming is right here
+    mPtr->yo=350;//地面高度
+    mPtr->xm=500;//location of monster
+    mPtr->ym=350;//地面高度
     mPtr->monster = NULL;
     mPtr->monster2 = NULL;
 }
