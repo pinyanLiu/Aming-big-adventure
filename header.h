@@ -48,12 +48,11 @@ typedef struct MONSTER
 {
 ALLEGRO_BITMAP *monster;
 ALLEGRO_BITMAP *monster2;
-int barD_x;
-int barD_y;
+
 int xo; //ming at the position-xo monster start walking
 int yo;
 int xm;//monster position
 int ym;
 
-}m;
+}m ;
 #endif

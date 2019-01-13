@@ -21,8 +21,9 @@ void invisibleblock(g* gPtr)
 
 #include "functionlist.h"
 
-void monsterP(m*mPtr,g* gPtr,int xm,int ym)
+void monsterP(int monster,m*mPtr)
 {
-    mPtr->xm-=PADDLE_MOVE;
-    al_draw_bitmap(mPtr->monster,mPtr->xm,mPtr->ym,0);
+    if(monster=1)
+        mPtr->xm--;
+al_draw_bitmap(mPtr->monster2, mPtr->xm,mPtr->ym,0);
 }

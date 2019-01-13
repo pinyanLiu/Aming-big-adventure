@@ -46,24 +46,19 @@ int main( void )
         //move aming
         moveAming(&GAME);
         //monster
-                /*if(z == 1){
-        j= monster(&MONSTER,&GAME);
-        if(j == 1){z++;} }
-        if(j == 1){
-           MONSTER.xm-=PADDLE_MOVE;
-        al_draw_bitmap(MONSTER.monster,MONSTER.xm,MONSTER.ym,0);
-        }*/
-        if(z == 1){
-           j=monster(&MONSTER,&GAME,390,440);
-        if( j == 1){z++;}
-                    }
-        if(j == 1){
-            monsterP(&MONSTER,&GAME,630,430);
-        }
 
+         monsterP(monster(&GAME,&MONSTER,100,200,440),&MONSTER);
+         monsterP(monster(&GAME,&MONSTER,100,500,200),&MONSTER);
+
+        printf("barD_x %d\n",GAME.barD_x);
+        printf("xo %d\n",MONSTER.xo);
+        printf("yo %d\n",MONSTER.yo);
+        printf("xm %d\n",MONSTER.xm);
+        printf("ym %d\n",MONSTER.ym);
         //
         groundthorn(&GAME,100,440);
         groundthorn(&GAME,200,440);
+        groundthorn(&GAME,300,440);
        al_rest(0.01);
 
         /* display */
