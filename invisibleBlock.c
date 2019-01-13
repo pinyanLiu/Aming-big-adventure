@@ -17,3 +17,12 @@ void invisibleblock(g* gPtr)
 
 }*/
 /*撞到後不能再往上，回原本的位置*/
+#include <stdlib.h>
+
+#include "functionlist.h"
+
+void monsterP(m*mPtr,g* gPtr,int xm,int ym)
+{
+    mPtr->xm-=PADDLE_MOVE;
+    al_draw_bitmap(mPtr->monster,mPtr->xm,mPtr->ym,0);
+}

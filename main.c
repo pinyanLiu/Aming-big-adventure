@@ -32,6 +32,7 @@ int main( void )
     MONSTER.monster2 = al_load_bitmap( "monster2.png");
     GAME.barD_x = SCREEN_W / 2; /* give right paddle its initial X-coordinate */
     z = 1;
+
     while(1)
     {
         // al_get_keyboard_state(&KBstate);
@@ -46,25 +47,30 @@ int main( void )
         al_draw_bitmap( GAME.right1, GAME.barD_x,GAME.barD_y, 0);
         al_draw_bitmap( GAME.right2, GAME.barD_x,GAME.barD_y, 0);
         }
-        else
-        al_draw_bitmap( GAME.right1, GAME.barD_x,GAME.barD_y, 0);
 
         if (al_key_down(&GAME.KBstate, ALLEGRO_KEY_LEFT)){
         al_draw_bitmap( GAME.left1, GAME.barD_x,GAME.barD_y, 0);
         al_draw_bitmap( GAME.left2, GAME.barD_x,GAME.barD_y, 0);
         }
-        else
-            al_draw_bitmap( GAME.left1, GAME.barD_x,GAME.barD_y, 0);
+
         //move aming
         moveAming(&GAME);
         //monster
-                if(z == 1){
+                /*if(z == 1){
         j= monster(&MONSTER,&GAME);
         if(j == 1){z++;} }
         if(j == 1){
            MONSTER.xm-=PADDLE_MOVE;
         al_draw_bitmap(MONSTER.monster,MONSTER.xm,MONSTER.ym,0);
+        }*/
+        if(z == 1){
+           j=monster(&MONSTER,&GAME,390,440);
+        if( j == 1){z++;}
+                    }
+        if(j == 1){
+            monsterP(&MONSTER,&GAME,630,430);
         }
+
         //
         groundthorn(&GAME,100,440);
         groundthorn(&GAME,200,440);

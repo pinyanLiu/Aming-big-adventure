@@ -2,7 +2,7 @@
 
 #include "functionlist.h"
 
-int monster(m*mPtr,g* gPtr){
+int monster(m*mPtr,g* gPtr,int xo,int yo){
 int i,j;
 
 
