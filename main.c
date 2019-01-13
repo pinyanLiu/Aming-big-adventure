@@ -43,16 +43,6 @@ int main( void )
         // moveAming(); /* move the paddles */
         al_draw_bitmap(GAME.brick,GAME.x,GAME.y,0);
 
-        if(al_key_down(&GAME.KBstate, ALLEGRO_KEY_RIGHT)){
-        al_draw_bitmap( GAME.right1, GAME.barD_x,GAME.barD_y, 0);
-        al_draw_bitmap( GAME.right2, GAME.barD_x,GAME.barD_y, 0);
-        }
-
-        if (al_key_down(&GAME.KBstate, ALLEGRO_KEY_LEFT)){
-        al_draw_bitmap( GAME.left1, GAME.barD_x,GAME.barD_y, 0);
-        al_draw_bitmap( GAME.left2, GAME.barD_x,GAME.barD_y, 0);
-        }
-
         //move aming
         moveAming(&GAME);
         //monster

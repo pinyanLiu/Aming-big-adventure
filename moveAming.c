@@ -7,11 +7,18 @@ void moveAming(g* gPtr)
 {
 
     // if (al_key_down(&KBstate, ALLEGRO_KEY_LEFT)) barD_x -= PADDLE_MOVE;
-    if (al_key_down(&gPtr->KBstate, ALLEGRO_KEY_LEFT))
+    if (al_key_down(&gPtr->KBstate, ALLEGRO_KEY_LEFT)){
+        al_draw_bitmap( gPtr->left1, gPtr->barD_x,gPtr->barD_y, 0);
         gPtr->barD_x -= PADDLE_MOVE;
+        }
+
     // if (al_key_down(&KBstate, ALLEGRO_KEY_RIGHT)) barD_x += PADDLE_MOVE;
-    if (al_key_down(&gPtr->KBstate, ALLEGRO_KEY_RIGHT))
+    if (al_key_down(&gPtr->KBstate, ALLEGRO_KEY_RIGHT)){
+         al_draw_bitmap( gPtr->right1, gPtr->barD_x,gPtr->barD_y, 0);
          gPtr->barD_x += PADDLE_MOVE;
+         }
+
+
     // if(al_key_down(&KBstate, ALLEGRO_KEY_J) && jump)
     if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_J) && gPtr->jump)//JUMP 104
     {
