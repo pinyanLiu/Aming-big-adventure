@@ -49,7 +49,7 @@ typedef struct GAME
     ALLEGRO_DISPLAY *display;
 }g;
 
-typedef struct MONSTER
+typedef struct
 {
 ALLEGRO_BITMAP *monster;
 ALLEGRO_BITMAP *monster2;
@@ -58,6 +58,6 @@ int xo; //ming at the position-xo monster start walking
 int yo;
 int xm;//monster position
 int ym;
-
-}m ;
+int monsterMove;
+}m;
 #endif

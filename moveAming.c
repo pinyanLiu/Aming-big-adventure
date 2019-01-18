@@ -110,7 +110,7 @@ void moveAming(g* gPtr)
 {
 
 }*/
-void gameStructInit(g* gPtr,m*mPtr)
+void gameStructInit(g* gPtr,m* mPtr,m* m2Ptr)
 {
     gPtr->cur=0;
     gPtr->ccount=0;
@@ -134,5 +134,14 @@ void gameStructInit(g* gPtr,m*mPtr)
     mPtr->ym=430;
     mPtr->monster = NULL;
     mPtr->monster2 = NULL;
+    mPtr->monsterMove = NULL;
+
+    m2Ptr->xo=280;//monster will start move while aming is right here
+    m2Ptr->yo=440;
+    m2Ptr->xm=630;//location of monster
+    m2Ptr->ym=220;
+    m2Ptr->monster = NULL;
+    m2Ptr->monster2 = NULL;
+    m2Ptr->monsterMove = NULL;
 }
 
