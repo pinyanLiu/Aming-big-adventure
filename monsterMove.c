@@ -12,8 +12,8 @@ void monsterVertical(m* mPtr, g* gPtr){
         mPtr->ym=mPtr->ym-5;
 
         al_draw_bitmap(mPtr->superman, mPtr->xm,mPtr->ym,0);
+}
 
-       }
         /*if(mPtr->xm==0){
                  mPtr->monsterMove=2;}
          if(mPtr->monsterMove==2){
