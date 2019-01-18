@@ -21,10 +21,12 @@ int main( void )
     // display = al_create_display(SCREEN_W, SCREEN_H);
     GAME.display = al_create_display(SCREEN_W, SCREEN_H);
     // bar1 = al_load_bitmap( "bar1.jpg"); /* load the bar bitmap */
-    GAME.right1 = al_load_bitmap( "right1.png"); /* load the bar bitmap */
+    GAME.right1 = al_load_bitmap( "right1.png");
     GAME.right[0]= al_load_bitmap( "right1.png");
     GAME.right[1]= al_load_bitmap( "right2.png");
     GAME.left1 = al_load_bitmap( "left1.png");
+    GAME.left[0]= al_load_bitmap( "left1.png");
+    GAME.left[1]= al_load_bitmap( "left2.png");
     //GAME.left2 = al_load_bitmap( "left2.png");
     GAME.rightjump = al_load_bitmap( "rightjump.png");
     GAME.leftjump = al_load_bitmap( "leftjump.png");
@@ -35,7 +37,6 @@ int main( void )
     MONSTER.monster2 = al_load_bitmap( "monster2.png");
     GAME.barD_x = SCREEN_W / 2; /* give right paddle its initial X-coordinate */
     z = 1;
-
     while(1)
     {
         // al_get_keyboard_state(&KBstate);
@@ -75,7 +76,8 @@ int main( void )
     }
     for (int i=0;i<2;i++)
     al_destroy_bitmap( GAME.right[i]);
-
+    for (int i=0;i<2;i++)
+    al_destroy_bitmap( GAME.left[i]);
     // al_destroy_display( bar1);
     al_destroy_bitmap( GAME.right1);
     al_destroy_bitmap( GAME.left1);

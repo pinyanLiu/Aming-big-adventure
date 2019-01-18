@@ -19,6 +19,7 @@ typedef struct GAME
     int cur;
     int ccount;
     int delay;
+    int keydown;//judge if key down
     int x;
     int y;
     //int x=100,y=440;
