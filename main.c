@@ -22,13 +22,16 @@ int main( void )
     GAME.display = al_create_display(SCREEN_W, SCREEN_H);
     // bar1 = al_load_bitmap( "bar1.jpg"); /* load the bar bitmap */
     GAME.right1 = al_load_bitmap( "right1.png"); /* load the bar bitmap */
-    GAME.right2 = al_load_bitmap( "right2.png");
+    GAME.right[0]= al_load_bitmap( "right1.png");
+    GAME.right[1]= al_load_bitmap( "right2.png");
     GAME.left1 = al_load_bitmap( "left1.png");
-    GAME.left2 = al_load_bitmap( "left2.png");
+    //GAME.left2 = al_load_bitmap( "left2.png");
+    GAME.rightjump = al_load_bitmap( "rightjump.png");
+    GAME.leftjump = al_load_bitmap( "leftjump.png");
     // barD_x = SCREEN_H / 2; /* give right paddle its initial X-coordinate */
     GAME.brick = al_load_bitmap( "brick.jpg");
     GAME.gthorn = al_load_bitmap( "gthorn.png");
-        MONSTER.monster = al_load_bitmap( "monster.png");
+    MONSTER.monster = al_load_bitmap( "monster.png");
     MONSTER.monster2 = al_load_bitmap( "monster2.png");
     GAME.barD_x = SCREEN_W / 2; /* give right paddle its initial X-coordinate */
     z = 1;
@@ -42,7 +45,10 @@ int main( void )
             break;
         // moveAming(); /* move the paddles */
         al_draw_bitmap(GAME.brick,GAME.x,GAME.y,0);
-
+        al_draw_bitmap(GAME.brick,150,440,0);
+        al_draw_bitmap(GAME.brick,200,440,0);
+        al_draw_bitmap(GAME.brick,250,440,0);
+        al_draw_bitmap(GAME.brick,300,440,0);
         //move aming
         moveAming(&GAME);
         //monster
@@ -50,7 +56,7 @@ int main( void )
          monsterP(monster(&GAME,&MONSTER,100,200,440),&MONSTER);
          monsterP(monster(&GAME,&MONSTER,100,500,200),&MONSTER);
 
-        printf("barD_x %d\n",GAME.barD_x);
+        printf("barD_x %d\n",GAME.barD_y);
         printf("xo %d\n",MONSTER.xo);
         printf("yo %d\n",MONSTER.yo);
         printf("xm %d\n",MONSTER.xm);
@@ -59,7 +65,7 @@ int main( void )
         groundthorn(&GAME,100,440);
         groundthorn(&GAME,200,440);
         groundthorn(&GAME,300,440);
-       al_rest(0.01);
+        al_rest(0.01);
 
         /* display */
         al_flip_display(); /* Wait for the beginning of a vertical retrace. */
@@ -67,12 +73,14 @@ int main( void )
 
         /* Clear the complete target bitmap, but confined by the clipping rectangle. */
     }
+    for (int i=0;i<2;i++)
+    al_destroy_bitmap( GAME.right[i]);
 
     // al_destroy_display( bar1);
     al_destroy_bitmap( GAME.right1);
-    al_destroy_bitmap( GAME.right2);
     al_destroy_bitmap( GAME.left1);
-    al_destroy_bitmap( GAME.left2);
+    al_destroy_bitmap( GAME.rightjump);
+    al_destroy_bitmap( GAME.leftjump);
     // al_destroy_display( display); /* destroy the display */
     al_destroy_bitmap( GAME.brick);
     al_destroy_bitmap( GAME.gthorn);

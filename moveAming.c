@@ -5,7 +5,31 @@
 
 void moveAming(g* gPtr)
 {
+    //display bitmap
+     if (al_key_down(&gPtr->KBstate, ALLEGRO_KEY_LEFT)){
+        al_draw_bitmap( gPtr->left1, gPtr->barD_x,gPtr->barD_y, 0);
+     }
+     for(int i=0;i<2;i++){
+    if (al_key_down(&gPtr->KBstate, ALLEGRO_KEY_RIGHT)){
+         if(++gPtr->ccount>=gPtr->delay){
+        if(++gPtr->cur>=2)
+            gPtr->cur=0;
+        gPtr->ccount=0;
+    }
+         }
+         al_draw_bitmap( gPtr->right[gPtr->cur], gPtr->barD_x,gPtr->barD_y, 0);
+         }
 
+    /*if (!al_key_down(&gPtr->KBstate, ALLEGRO_KEY_LEFT)&&!al_key_down(&gPtr->KBstate, ALLEGRO_KEY_RIGHT)){
+            if(gPtr->barD_x -= PADDLE_MOVE){al_draw_bitmap( gPtr->left1, gPtr->barD_x,gPtr->barD_y, 0);}
+            if(gPtr->barD_x += PADDLE_MOVE){al_draw_bitmap( gPtr->right1, gPtr->barD_x,gPtr->barD_y, 0);}
+    }*/
+    if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_J) && gPtr->jump && al_key_down(&gPtr->KBstate, ALLEGRO_KEY_LEFT)){
+        al_draw_bitmap( gPtr->leftjump, gPtr->barD_x,gPtr->barD_y, 0);
+    }
+    if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_J) && gPtr->jump && al_key_down(&gPtr->KBstate, ALLEGRO_KEY_RIGHT)){
+        al_draw_bitmap( gPtr->rightjump, gPtr->barD_x,gPtr->barD_y, 0);
+    }
     // if (al_key_down(&KBstate, ALLEGRO_KEY_LEFT)) barD_x -= PADDLE_MOVE;
     if (al_key_down(&gPtr->KBstate, ALLEGRO_KEY_LEFT)){
         al_draw_bitmap( gPtr->left1, gPtr->barD_x,gPtr->barD_y, 0);
@@ -17,8 +41,12 @@ void moveAming(g* gPtr)
          al_draw_bitmap( gPtr->right1, gPtr->barD_x,gPtr->barD_y, 0);
          gPtr->barD_x += PADDLE_MOVE;
          }
-
-
+    if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_J) && gPtr->jump && al_key_down(&gPtr->KBstate, ALLEGRO_KEY_LEFT)){
+        al_draw_bitmap( gPtr->leftjump, gPtr->barD_x,gPtr->barD_y, 0);
+    }
+    if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_J) && gPtr->jump && al_key_down(&gPtr->KBstate, ALLEGRO_KEY_RIGHT)){
+        al_draw_bitmap( gPtr->rightjump, gPtr->barD_x,gPtr->barD_y, 0);
+    }
     // if(al_key_down(&KBstate, ALLEGRO_KEY_J) && jump)
     if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_J) && gPtr->jump)//JUMP 104
     {
@@ -69,6 +97,9 @@ void moveAming(g* gPtr)
 }*/
 void gameStructInit(g* gPtr,m*mPtr)
 {
+    gPtr->cur=0;
+    gPtr->ccount=0;
+    gPtr->delay=5;
     gPtr->x=100;
     gPtr->y=440;
     gPtr->jump = false;
@@ -76,7 +107,7 @@ void gameStructInit(g* gPtr,m*mPtr)
     gPtr->velX = 0;
     gPtr->velY = 0;
     gPtr->gravity = 1;
-    gPtr->groundHeight = 440;
+    gPtr->groundHeight = 430;
     gPtr->brick = NULL;
     gPtr->display = NULL;
     mPtr->xo=390;//monster will start move while aming is right here
