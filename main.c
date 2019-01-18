@@ -11,9 +11,47 @@ int main( void )
 
     /* first, set up Allegro and the graphics mode */
     al_init(); /* initialize Allegro */
+    al_install_mouse();
     al_install_keyboard(); /* install the keyboard for Allegro to use */
     al_init_image_addon();
     //int a;//the var of while
+
+    alEventQueue = al_create_event_queue();
+    if(alEventQueue == NULL)
+    {
+        printf("Failed to create event queue!\n");
+        return -1;
+    }
+    al_register_event_source(alEventQueue, al_get_mouse_event_source());
+    while(1){
+        al_wait_for_event(alEventQueue, &alEvent);
+        al_get_mouse_state(&ROSE);
+        if(al_mouse_button_down(&ROSE,1))
+        {
+            aim_x[t]=al_get_mouse_state_axis(&ROSE,0);
+            aim_y[t]=al_get_mouse_state_axis(&ROSE,1);
+            t++;
+        }
+        if(t == 2)
+        {
+            /*turn location into array*/
+            aim_x[0] = aim_x[0]/80-1;
+            aim_y[0] = aim_y[0]/80-1;
+            aim_x[1] = aim_x[1]/80-1;
+            aim_y[1] = aim_y[1]/80-1;
+            i=checkswap_(aim_x[0],aim_y[0],aim_x[1],aim_y[1]);
+            if (i == 0){
+            printf("wrong ,try again\n");
+            t = 0;
+            }
+            else{   break ;}
+        }
+        else if(alEvent.type == ALLEGRO_EVENT_MOUSE_AXES)
+        {
+            pox_x=alEvent.mouse.x;
+            pox_y=alEvent.mouse.y;
+        }
+    }
     // Initial game structure
     gameStructInit(&GAME,&MONSTER,&MONSTER2);
 

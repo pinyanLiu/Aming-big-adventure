@@ -16,6 +16,7 @@ void gameStructInit(g* gPtr,m* mPtr,m* m2Ptr)
     gPtr->velY = 0;
     gPtr->gravity = 1;
     gPtr->groundHeight = 430;
+    gPtr->alEventQueue = NULL;
     gPtr->right[gPtr->cur]=NULL;
     gPtr->left[gPtr->cur]=NULL;
     gPtr->brick = NULL;
