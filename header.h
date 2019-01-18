@@ -52,6 +52,8 @@ typedef struct GAME
 typedef struct
 {
 ALLEGRO_BITMAP *monster[2];
+ALLEGRO_BITMAP *superman;
+ALLEGRO_BITMAP *rocket;
 
 int xo; //ming at the position-xo monster start walking
 int yo;

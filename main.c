@@ -7,7 +7,7 @@
 int main( void )
 {
     g GAME;
-    m MONSTER,MONSTER2;
+    m MONSTER,MONSTER2,MONSTER3;
 
     /* first, set up Allegro and the graphics mode */
     al_init(); /* initialize Allegro */
@@ -16,7 +16,7 @@ int main( void )
     al_init_image_addon();
     //int a;//the var of while
 
-    alEventQueue = al_create_event_queue();
+/*    alEventQueue = al_create_event_queue();
     if(alEventQueue == NULL)
     {
         printf("Failed to create event queue!\n");
@@ -34,7 +34,7 @@ int main( void )
         }
         if(t == 2)
         {
-            /*turn location into array*/
+
             aim_x[0] = aim_x[0]/80-1;
             aim_y[0] = aim_y[0]/80-1;
             aim_x[1] = aim_x[1]/80-1;
@@ -51,9 +51,9 @@ int main( void )
             pox_x=alEvent.mouse.x;
             pox_y=alEvent.mouse.y;
         }
-    }
+    }*/
     // Initial game structure
-    gameStructInit(&GAME,&MONSTER,&MONSTER2);
+    gameStructInit(&GAME,&MONSTER,&MONSTER2,&MONSTER3);
 
     // display = al_create_display(SCREEN_W, SCREEN_H);
     GAME.display = al_create_display(SCREEN_W, SCREEN_H);
@@ -70,6 +70,8 @@ int main( void )
     MONSTER.monster[1] = al_load_bitmap( "monster2.png");
     MONSTER2.monster[0] = al_load_bitmap( "monster.png");
     MONSTER2.monster[1] = al_load_bitmap( "monster2.png");
+    MONSTER3.rocket = al_load_bitmap( "rocket.png");
+    MONSTER3.superman= al_load_bitmap( "superman.png");
     GAME.barD_x = SCREEN_W / 2; /* give aming its initial X-coordinate */
 
     while(1)
@@ -90,6 +92,11 @@ int main( void )
         //monster
         monster(&MONSTER,&GAME);
         monster(&MONSTER2,&GAME);
+        monsterVertical(&MONSTER3,&GAME);
+         printf("ym=%d\n",&MONSTER2.ym);
+        printf("xm=%d\n",&MONSTER2.xm);
+       /* printf("ym=%d\n",&MONSTER3.ym);
+        printf("xm=%d\n",&MONSTER3.xm);*/
         //groundthorn
         groundthorn(&GAME,100,440);
         groundthorn(&GAME,200,440);
@@ -113,6 +120,8 @@ int main( void )
     al_destroy_bitmap( GAME.brick);
     al_destroy_bitmap( GAME.gthorn);
     al_destroy_display( GAME.display); /* destroy the display */
+    al_destroy_bitmap( MONSTER3.rocket);
+    al_destroy_bitmap( MONSTER3.superman);
     for (int i=0;i<2;i++)
     al_destroy_bitmap( MONSTER.monster[i]);
     for (int i=0;i<2;i++)
