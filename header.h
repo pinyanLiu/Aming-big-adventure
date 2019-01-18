@@ -35,10 +35,7 @@ typedef struct GAME
     // const int groundHeight = 545;
     int groundHeight;
     ALLEGRO_KEYBOARD_STATE KBstate;
-    // ALLEGRO_BITMAP *bar1 = NULL; /* pointer to the bar's image bitmap */
-    ALLEGRO_BITMAP *right1;
     ALLEGRO_BITMAP *right[2];
-    ALLEGRO_BITMAP *left1;
     ALLEGRO_BITMAP *left[2];
     ALLEGRO_BITMAP *rightjump;
     ALLEGRO_BITMAP *leftjump;
@@ -51,8 +48,7 @@ typedef struct GAME
 
 typedef struct
 {
-ALLEGRO_BITMAP *monster;
-ALLEGRO_BITMAP *monster2;
+ALLEGRO_BITMAP *monster[2];
 
 int xo; //ming at the position-xo monster start walking
 int yo;
