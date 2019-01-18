@@ -21,7 +21,7 @@ void invisibleblock(g* gPtr)
 
 #include "functionlist.h"
 
-void monsterP(int monster,m*mPtr)
+void monsterP(int monster,m* mPtr)
 {
     if(monster=1)
         mPtr->xm--;

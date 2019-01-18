@@ -2,7 +2,7 @@
 
 #include "functionlist.h"
 
-int monster(m*mPtr,g* gPtr,int xo,int xm,int ym ){
+int monster(m* mPtr, g* gPtr){
 
 
         if(gPtr->barD_x==mPtr->xo)
