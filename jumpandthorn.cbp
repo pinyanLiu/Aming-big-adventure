@@ -67,10 +67,11 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add directory="D:/allegro-mingw-gcc5.3.0-x86-static-5.2.1.1/include" />
+			<Add directory="C:/allegro-mingw-gcc5.3.0-x86-static-5.2.1.1/include" />
 		</Compiler>
 		<Linker>
-			<Add option="-static" />
 			<Add option="-static-libgcc" />
+			<Add option="-static" />
 			<Add library="liballegro_monolith-static.a" />
 			<Add library="libvorbisfile.a" />
 			<Add library="libvorbis.a" />
@@ -100,7 +101,14 @@
 			<Add library="libcomdlg32.a" />
 			<Add library="libadvapi32.a" />
 			<Add directory="D:/allegro-mingw-gcc5.3.0-x86-static-5.2.1.1/lib" />
+			<Add directory="C:/allegro-mingw-gcc5.3.0-x86-static-5.2.1.1/lib" />
 		</Linker>
+		<Unit filename="deadjection.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="fall.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="functionlist.h" />
 		<Unit filename="groundThorn.c">
 			<Option compilerVar="CC" />
