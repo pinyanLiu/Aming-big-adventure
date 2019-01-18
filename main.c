@@ -9,7 +9,7 @@ int main( void )
 
     int j,z;//monster var
     g GAME;
-    m MONSTER;
+    m MONSTER,MONSTER2;
 
     /* first, set up Allegro and the graphics mode */
     al_init(); /* initialize Allegro */
@@ -17,7 +17,7 @@ int main( void )
     al_init_image_addon();
     //int a;//the var of while
     // Initial game structure
-    gameStructInit(&GAME,&MONSTER);
+    gameStructInit(&GAME,&MONSTER,&MONSTER2);
 
     // display = al_create_display(SCREEN_W, SCREEN_H);
     GAME.display = al_create_display(SCREEN_W, SCREEN_H);
@@ -31,6 +31,8 @@ int main( void )
     GAME.gthorn = al_load_bitmap( "gthorn.png");
     MONSTER.monster = al_load_bitmap( "monster.png");
     MONSTER.monster2 = al_load_bitmap( "monster2.png");
+    MONSTER2.monster = al_load_bitmap( "monster.png");
+    MONSTER2.monster2 = al_load_bitmap( "monster2.png");
     GAME.barD_x = SCREEN_W / 2; /* give right paddle its initial X-coordinate */
     z = 1;
 
@@ -59,19 +61,14 @@ int main( void )
         //monster
 
          monster(&MONSTER,&GAME);
+        monster(&MONSTER2,&GAME);
 
 
-        printf("barD_x %d\n",GAME.barD_x);
-        printf("xo %d\n",MONSTER.xo);
-        printf("yo %d\n",MONSTER.yo);
-        printf("xm %d\n",MONSTER.xm);
-        printf("ym %d\n",MONSTER.ym);
-        printf("monstermove %d\n",MONSTER.monsterMove);
         //
         groundthorn(&GAME,100,440);
         groundthorn(&GAME,200,440);
         groundthorn(&GAME,300,440);
-       al_rest(0.01);
+       al_rest(0.001);
 
         /* display */
         al_flip_display(); /* Wait for the beginning of a vertical retrace. */
@@ -91,5 +88,7 @@ int main( void )
     al_destroy_display( GAME.display); /* destroy the display */
     al_destroy_bitmap( MONSTER.monster2);
     al_destroy_bitmap( MONSTER.monster);
+    al_destroy_bitmap( MONSTER2.monster2);
+    al_destroy_bitmap( MONSTER2.monster);
     return 0;
 } /* end function main */

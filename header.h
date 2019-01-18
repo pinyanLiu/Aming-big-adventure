@@ -44,7 +44,7 @@ typedef struct GAME
     ALLEGRO_DISPLAY *display;
 }g;
 
-typedef struct MONSTER
+typedef struct
 {
 ALLEGRO_BITMAP *monster;
 ALLEGRO_BITMAP *monster2;
@@ -54,5 +54,5 @@ int yo;
 int xm;//monster position
 int ym;
 int monsterMove;
-}m ;
+}m;
 #endif

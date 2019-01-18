@@ -3,10 +3,10 @@
 
 #include "header.h"
 
-void gameStructInit(g* gPtr,m*mPtr);
+void gameStructInit(g* gPtr,m*mPtr,m* m2Ptr);
 void moveAming(g* gPtr);
 void groundthorn(g* gPtr,int,int);
 void invisibleblock(g* gPtr);
-int monster(m* mPtr,g* gPtr);
-void monsterP(int monster,m* mPtr);
+void monster(m* mPtr,g* gPtr);
+
 #endif
