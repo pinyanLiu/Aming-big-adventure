@@ -60,7 +60,7 @@ void moveAming(g* gPtr)
 {
 
 }*/
-void gameStructInit(g* gPtr,m*mPtr)
+void gameStructInit(g* gPtr,m* mPtr)
 {
     gPtr->x=100;
     gPtr->y=440;
@@ -78,5 +78,6 @@ void gameStructInit(g* gPtr,m*mPtr)
     mPtr->ym=430;
     mPtr->monster = NULL;
     mPtr->monster2 = NULL;
+    mPtr->monsterMove = NULL;
 }
 

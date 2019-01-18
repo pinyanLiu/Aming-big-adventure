@@ -9,7 +9,8 @@ int main( void )
 
     int j,z;//monster var
     g GAME;
-    m MONSTER[2];
+    m MONSTER;
+
     /* first, set up Allegro and the graphics mode */
     al_init(); /* initialize Allegro */
     al_install_keyboard(); /* install the keyboard for Allegro to use */
@@ -28,8 +29,8 @@ int main( void )
     // barD_x = SCREEN_H / 2; /* give right paddle its initial X-coordinate */
     GAME.brick = al_load_bitmap( "brick.jpg");
     GAME.gthorn = al_load_bitmap( "gthorn.png");
-        MONSTER[1].monster = al_load_bitmap( "monster.png");
-    MONSTER[1].monster2 = al_load_bitmap( "monster2.png");
+    MONSTER.monster = al_load_bitmap( "monster.png");
+    MONSTER.monster2 = al_load_bitmap( "monster2.png");
     GAME.barD_x = SCREEN_W / 2; /* give right paddle its initial X-coordinate */
     z = 1;
 
@@ -57,14 +58,15 @@ int main( void )
         moveAming(&GAME);
         //monster
 
-         monsterP(monster(&GAME,&MONSTER[1]),&MONSTER[1]);
-         monsterP(monster(&GAME,&MONSTER[2]),&MONSTER[2]);
+         monster(&MONSTER,&GAME);
+
 
         printf("barD_x %d\n",GAME.barD_x);
-        printf("xo %d\n",MONSTER[1].xo);
-        printf("yo %d\n",MONSTER[1].yo);
-        printf("xm %d\n",MONSTER[1].xm);
-        printf("ym %d\n",MONSTER[1].ym);
+        printf("xo %d\n",MONSTER.xo);
+        printf("yo %d\n",MONSTER.yo);
+        printf("xm %d\n",MONSTER.xm);
+        printf("ym %d\n",MONSTER.ym);
+        printf("monstermove %d\n",MONSTER.monsterMove);
         //
         groundthorn(&GAME,100,440);
         groundthorn(&GAME,200,440);
@@ -87,7 +89,7 @@ int main( void )
     al_destroy_bitmap( GAME.brick);
     al_destroy_bitmap( GAME.gthorn);
     al_destroy_display( GAME.display); /* destroy the display */
-    al_destroy_bitmap( MONSTER[1].monster2);
-    al_destroy_bitmap( MONSTER[1].monster);
+    al_destroy_bitmap( MONSTER.monster2);
+    al_destroy_bitmap( MONSTER.monster);
     return 0;
 } /* end function main */

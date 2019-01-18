@@ -53,6 +53,6 @@ int xo; //ming at the position-xo monster start walking
 int yo;
 int xm;//monster position
 int ym;
-
+int monsterMove;
 }m ;
 #endif
