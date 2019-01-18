@@ -16,6 +16,9 @@ typedef struct GAME
 {
     int barD_x;
     int barD_y;
+    int cur;
+    int ccount;
+    int delay;
     int x;
     int y;
     //int x=100,y=440;
@@ -33,10 +36,11 @@ typedef struct GAME
     ALLEGRO_KEYBOARD_STATE KBstate;
     // ALLEGRO_BITMAP *bar1 = NULL; /* pointer to the bar's image bitmap */
     ALLEGRO_BITMAP *right1;
-    ALLEGRO_BITMAP *right2;
+    ALLEGRO_BITMAP *right[2];
     ALLEGRO_BITMAP *left1;
-    ALLEGRO_BITMAP *left2;
-
+    ALLEGRO_BITMAP *left[2];
+    ALLEGRO_BITMAP *rightjump;
+    ALLEGRO_BITMAP *leftjump;
     //ALLEGRO_BITMAP *brick = NULL;
     ALLEGRO_BITMAP *brick;
     ALLEGRO_BITMAP *gthorn;

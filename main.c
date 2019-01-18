@@ -23,9 +23,12 @@ int main( void )
     GAME.display = al_create_display(SCREEN_W, SCREEN_H);
     // bar1 = al_load_bitmap( "bar1.jpg"); /* load the bar bitmap */
     GAME.right1 = al_load_bitmap( "right1.png"); /* load the bar bitmap */
-    GAME.right2 = al_load_bitmap( "right2.png");
+    GAME.right[0]= al_load_bitmap( "right1.png");
+    GAME.right[1]= al_load_bitmap( "right2.png");
     GAME.left1 = al_load_bitmap( "left1.png");
-    GAME.left2 = al_load_bitmap( "left2.png");
+    //GAME.left2 = al_load_bitmap( "left2.png");
+    GAME.rightjump = al_load_bitmap( "rightjump.png");
+    GAME.leftjump = al_load_bitmap( "leftjump.png");
     // barD_x = SCREEN_H / 2; /* give right paddle its initial X-coordinate */
     GAME.brick = al_load_bitmap( "brick.jpg");
     GAME.gthorn = al_load_bitmap( "gthorn.png");
@@ -45,17 +48,10 @@ int main( void )
             break;
         // moveAming(); /* move the paddles */
         al_draw_bitmap(GAME.brick,GAME.x,GAME.y,0);
-
-        if(al_key_down(&GAME.KBstate, ALLEGRO_KEY_RIGHT)){
-        al_draw_bitmap( GAME.right1, GAME.barD_x,GAME.barD_y, 0);
-        al_draw_bitmap( GAME.right2, GAME.barD_x,GAME.barD_y, 0);
-        }
-
-        if (al_key_down(&GAME.KBstate, ALLEGRO_KEY_LEFT)){
-        al_draw_bitmap( GAME.left1, GAME.barD_x,GAME.barD_y, 0);
-        al_draw_bitmap( GAME.left2, GAME.barD_x,GAME.barD_y, 0);
-        }
-
+        al_draw_bitmap(GAME.brick,150,440,0);
+        al_draw_bitmap(GAME.brick,200,440,0);
+        al_draw_bitmap(GAME.brick,250,440,0);
+        al_draw_bitmap(GAME.brick,300,440,0);
         //move aming
         moveAming(&GAME);
         //monster
@@ -76,12 +72,14 @@ int main( void )
 
         /* Clear the complete target bitmap, but confined by the clipping rectangle. */
     }
+    for (int i=0;i<2;i++)
+    al_destroy_bitmap( GAME.right[i]);
 
     // al_destroy_display( bar1);
     al_destroy_bitmap( GAME.right1);
-    al_destroy_bitmap( GAME.right2);
     al_destroy_bitmap( GAME.left1);
-    al_destroy_bitmap( GAME.left2);
+    al_destroy_bitmap( GAME.rightjump);
+    al_destroy_bitmap( GAME.leftjump);
     // al_destroy_display( display); /* destroy the display */
     al_destroy_bitmap( GAME.brick);
     al_destroy_bitmap( GAME.gthorn);
