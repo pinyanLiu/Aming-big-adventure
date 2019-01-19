@@ -93,8 +93,6 @@ int main( void )
         monster(&MONSTER,&GAME);
         monster(&MONSTER2,&GAME);
         monsterVertical(&MONSTER3,&GAME);
-         printf("ym=%d\n",&MONSTER2.ym);
-        printf("xm=%d\n",&MONSTER2.xm);
        /* printf("ym=%d\n",&MONSTER3.ym);
         printf("xm=%d\n",&MONSTER3.xm);*/
         //groundthorn

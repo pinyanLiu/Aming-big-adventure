@@ -29,6 +29,7 @@ void gameStructInit(g* gPtr,m* mPtr,m* m2Ptr,m* m3Ptr)
     mPtr->monsterMove = NULL;
     mPtr->rocket = NULL;
     mPtr->superman = NULL;
+    mPtr->b= NULL;
 
     m2Ptr->xo=280;//monster will start move while aming is right here
     m2Ptr->yo=440;
@@ -45,6 +46,7 @@ void gameStructInit(g* gPtr,m* mPtr,m* m2Ptr,m* m3Ptr)
     m3Ptr->ym=640;
     m3Ptr->monster[gPtr->cur] = NULL;
     m3Ptr->monsterMove = NULL;
+    m3Ptr->c= NULL;
     m3Ptr->rocket = NULL;
     m3Ptr->superman = NULL;
 }

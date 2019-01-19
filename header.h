@@ -60,5 +60,7 @@ int yo;
 int xm;//monster position
 int ym;
 int monsterMove;
+int c;
+int b;
 }m;
 #endif

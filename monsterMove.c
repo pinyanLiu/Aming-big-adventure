@@ -9,16 +9,22 @@ void monsterVertical(m* mPtr, g* gPtr){
         if(gPtr->barD_x>=mPtr->xo)
        mPtr->monsterMove=1;
        if(mPtr->monsterMove==1){
-        mPtr->ym=mPtr->ym-5;
+        mPtr->ym=mPtr->ym-1;//superman velocity
 
         al_draw_bitmap(mPtr->superman, mPtr->xm,mPtr->ym,0);
 }
 
-        /*if(mPtr->xm==0){
-                 mPtr->monsterMove=2;}
-         if(mPtr->monsterMove==2){
-            mPtr->xm=mPtr->xm+3;
-        al_draw_bitmap(mPtr->monster2, mPtr->xm,mPtr->ym,0);
- }*/
 
+
+//superman W200H400
+//Aming W50H50
+  for(int i=0;i<200;i++){
+    if(gPtr->barD_x==mPtr->xm+i)
+        mPtr->c=1;
+        if(mPtr->c==1){
+    if(gPtr->barD_y==mPtr->ym-i)
+     printf("you are dead");
+     }
 }
+}
+
