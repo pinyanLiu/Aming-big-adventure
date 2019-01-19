@@ -13,5 +13,13 @@ void deadjection(g*gPtr);
 void map_display(int a,int i,g* gPtr,m*mPtr);
 void map_move(g* gPtr);
 int groundhigh(int a,g* gPtr);
-int deadway(g* gPtr);
+void deadway(g* gPtr);
+void savepoint(g* gPtr);
+int pass(g*gPtr,int i);
+void choosemap(g*gPtr);
+void peopledisplay(g*gPtr);
+
+void monsterVertical(m* mPtr,g* gPtr);
+
+void peopledisplay(g*gPtr);
 #endif

@@ -103,6 +103,9 @@
 			<Add directory="D:/allegro-mingw-gcc5.3.0-x86-static-5.2.1.1/lib" />
 			<Add directory="C:/allegro-mingw-gcc5.3.0-x86-static-5.2.1.1/lib" />
 		</Linker>
+		<Unit filename="choosemap.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="deadjection.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -130,6 +133,15 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="moveAming.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pass.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="peopledisplay.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="savepoint.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>

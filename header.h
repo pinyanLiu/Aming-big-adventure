@@ -18,6 +18,10 @@ typedef struct GAME
     int barD_y;
     int x;
     int y;
+    int cur;
+    int ccount;
+    int delay;
+    int keydown;//judge if key down
     //int x=100,y=440;
     // bool jump = false;
     bool jump;
@@ -34,13 +38,21 @@ typedef struct GAME
     //細部調節地圖
     int block;
     //粗調整地圖
-    int life;
+    int stopblock;//是否不再轉動
+    int life;//生命值量
+    int pass;//是否通關
+    int mapcontral;//選擇地圖
+    int dead;
+    ALLEGRO_EVENT alEvent;
+    ALLEGRO_EVENT_QUEUE* alEventQueue;
+    ALLEGRO_MOUSE_STATE Mstate;
     ALLEGRO_KEYBOARD_STATE KBstate;
+    ALLEGRO_BITMAP *right[2];
+    ALLEGRO_BITMAP *left[2];
+    ALLEGRO_BITMAP *rightjump;
+    ALLEGRO_BITMAP *leftjump;
     // ALLEGRO_BITMAP *bar1 = NULL; /* pointer to the bar's image bitmap */
-    ALLEGRO_BITMAP *right1;
-    ALLEGRO_BITMAP *right2;
-    ALLEGRO_BITMAP *left1;
-    ALLEGRO_BITMAP *left2;
+
 
     //ALLEGRO_BITMAP *brick = NULL;
     ALLEGRO_BITMAP *brick;
@@ -66,25 +78,29 @@ typedef struct GAME
     ALLEGRO_BITMAP* groundthorn  ;//地刺
     ALLEGRO_BITMAP* h  ;
     ALLEGRO_BITMAP* flag  ;//儲存點*/
+    ALLEGRO_BITMAP* Empty  ;
 
      ALLEGRO_BITMAP* background  ;
-   /* ALLEGRO_BITMAP* background2 = NULL ;//2和3換關的時候才會用到
-    ALLEGRO_BITMAP* background3 = NULL ;//場景*/
+    ALLEGRO_BITMAP* background2  ;//2和3換關的時候才會用到
+    ALLEGRO_BITMAP* background3  ;//場景
     // ALLEGRO_DISPLAY *display = NULL;/* pointer to display */
     ALLEGRO_DISPLAY *display;
 }g;
 
 typedef struct MONSTER
 {
-ALLEGRO_BITMAP *monster;
-ALLEGRO_BITMAP *monster2;
+ALLEGRO_BITMAP *monster[2];
+ALLEGRO_BITMAP *superman;
+ALLEGRO_BITMAP *rocket;
 int barD_x;
 int barD_y;
 int xo; //ming at the position-xo monster start walking
 int yo;
 int xm;//monster position
 int ym;
-
+int monsterMove;
+int c;
+int b;
 }m;
 /*typedef struct mapvalue{
 int groundhigh;

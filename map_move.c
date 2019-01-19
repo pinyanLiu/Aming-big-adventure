@@ -3,7 +3,7 @@
 #include "functionlist.h"
 
 void map_move(g* gPtr){
-    if( gPtr->block != 80)
+    if( gPtr->block != gPtr->stopblock)
         {
         if (gPtr->barD_x > 300)
             {
@@ -17,15 +17,15 @@ void map_move(g* gPtr){
             gPtr->barD_x = 200;
             }
          }
-        if(gPtr->barD_x >= 300 &&gPtr->block != 80)
+        if(gPtr->barD_x >= 300 &&gPtr->block != gPtr->stopblock)
             {
-            gPtr->step=gPtr->step+2;
-            gPtr->barD_x =gPtr->barD_x -2;
+            gPtr->step=gPtr->step+2.5;
+            gPtr->barD_x =gPtr->barD_x -1;
             }
         if(gPtr->barD_x <= 200 && gPtr->block != 0)
             {
-            gPtr->step=gPtr->step-2;
-           gPtr->barD_x =gPtr->barD_x +2;
+            gPtr->step=gPtr->step-2.5;
+           gPtr->barD_x =gPtr->barD_x +1;
             }
         if(gPtr->step > 50  )
             {
