@@ -34,8 +34,11 @@ typedef struct GAME
     float gravity;
     // const int groundHeight = 545;
     int groundHeight;
-    ALLEGRO_MOUSE_STATE Mstate;
+    ALLEGRO_MOUSE_STATE MSstate;
     ALLEGRO_KEYBOARD_STATE KBstate;
+    ALLEGRO_BITMAP *START;
+    ALLEGRO_BITMAP *STAFF;
+    ALLEGRO_BITMAP *OPERATION;
     ALLEGRO_BITMAP *right[2];
     ALLEGRO_BITMAP *left[2];
     ALLEGRO_BITMAP *rightjump;

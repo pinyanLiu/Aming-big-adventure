@@ -16,11 +16,14 @@ void gameStructInit(g* gPtr,m* mPtr,m* m2Ptr)
     gPtr->velY = 0;
     gPtr->gravity = 1;
     gPtr->groundHeight = 430;
-   // gPtr->alEventQueue = NULL;
     gPtr->right[gPtr->cur]=NULL;
     gPtr->left[gPtr->cur]=NULL;
+    gPtr->START = NULL;
+    gPtr->STAFF = NULL;
+    gPtr->OPERATION = NULL;
     gPtr->brick = NULL;
     gPtr->display = NULL;
+
     mPtr->xo=390;//monster will start move while aming is right here
     mPtr->yo=440;
     mPtr->xm=630;//location of monster

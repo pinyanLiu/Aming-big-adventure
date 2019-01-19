@@ -25,6 +25,9 @@ int main( void )
     // display = al_create_display(SCREEN_W, SCREEN_H);
     GAME.display = al_create_display(SCREEN_W, SCREEN_H);
     //load the bitmap
+    GAME.START = al_load_bitmap( "START.png");
+    GAME.STAFF = al_load_bitmap( "STAFF.png");
+    GAME.OPERATION= al_load_bitmap( "OPERATION.png");
     GAME.right[0]= al_load_bitmap( "right1.png");
     GAME.right[1]= al_load_bitmap( "right2.png");
     GAME.left[0]= al_load_bitmap( "left1.png");
@@ -44,21 +47,43 @@ int main( void )
     //game introduction
     while(mode==1)
     {
-        al_get_mouse_state(&GAME.Mstate);
-        if(al_mouse_button_down(&GAME.Mstate,1)==1)
+
+        al_draw_bitmap(GAME.START,280,190,0);
+        al_draw_bitmap(GAME.STAFF,280,240,0);
+        al_draw_bitmap(GAME.OPERATION,280,290,0);
+
+
+        al_get_mouse_state(&GAME.MSstate);
+        if(al_mouse_button_down(&GAME.MSstate,1)==1)
         {
-            x=al_get_mouse_state_axis(&GAME.Mstate,0);
-            y=al_get_mouse_state_axis(&GAME.Mstate,1);
-        }
+            printf("al_mouse_button_down(&GAME.MSstate,1)==%d\n",al_mouse_button_down(&GAME.MSstate,1));
+            x=al_get_mouse_state_axis(&GAME.MSstate,0);
+            y=al_get_mouse_state_axis(&GAME.MSstate,1);
+
         while(1)
         {
-        if(al_mouse_button_down(&GAME.Mstate,1)==0)
+             al_get_mouse_state(&GAME.MSstate);
+        if(al_mouse_button_down(&GAME.MSstate,1)==0)
         {
-            xn=al_get_mouse_state_axis(&GAME.Mstate,0);
-            yn=al_get_mouse_state_axis(&GAME.Mstate,1);
+
+            xn=al_get_mouse_state_axis(&GAME.MSstate,0);
+            yn=al_get_mouse_state_axis(&GAME.MSstate,1);
             break;
         }
         }
+        //ues mouse to choose start,operation,staff
+
+
+        mode=2;
+
+
+
+
+
+        }
+        al_flip_display(); /* Wait for the beginning of a vertical retrace. */
+        al_clear_to_color(al_map_rgb(0,0,0));
+
     }
     //game start window
     while(mode==2)
@@ -91,7 +116,11 @@ int main( void )
 
         /* Clear the complete target bitmap, but confined by the clipping rectangle. */
     }
+    break;
     }
+    al_destroy_bitmap( GAME.START);
+    al_destroy_bitmap( GAME.OPERATION);
+    al_destroy_bitmap( GAME.STAFF);
     for (int i=0;i<2;i++)
     al_destroy_bitmap( GAME.right[i]);
     for (int i=0;i<2;i++)
