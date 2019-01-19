@@ -8,6 +8,11 @@ int main( void )
 {
     g GAME;
     m MONSTER,MONSTER2;
+    gameStructInit(&GAME,&MONSTER,&MONSTER2);
+    int mode=1;//mode=1 game introduction,mode=2 game start window
+    int run=1;//run=0 game over
+    int x=0,y=0;//the axis of mouse
+    int xn=1000,yn=1000;
 
     /* first, set up Allegro and the graphics mode */
     al_init(); /* initialize Allegro */
@@ -15,45 +20,7 @@ int main( void )
     al_install_keyboard(); /* install the keyboard for Allegro to use */
     al_init_image_addon();
     //int a;//the var of while
-
-    alEventQueue = al_create_event_queue();
-    if(alEventQueue == NULL)
-    {
-        printf("Failed to create event queue!\n");
-        return -1;
-    }
-    al_register_event_source(alEventQueue, al_get_mouse_event_source());
-    while(1){
-        al_wait_for_event(alEventQueue, &alEvent);
-        al_get_mouse_state(&ROSE);
-        if(al_mouse_button_down(&ROSE,1))
-        {
-            aim_x[t]=al_get_mouse_state_axis(&ROSE,0);
-            aim_y[t]=al_get_mouse_state_axis(&ROSE,1);
-            t++;
-        }
-        if(t == 2)
-        {
-            /*turn location into array*/
-            aim_x[0] = aim_x[0]/80-1;
-            aim_y[0] = aim_y[0]/80-1;
-            aim_x[1] = aim_x[1]/80-1;
-            aim_y[1] = aim_y[1]/80-1;
-            i=checkswap_(aim_x[0],aim_y[0],aim_x[1],aim_y[1]);
-            if (i == 0){
-            printf("wrong ,try again\n");
-            t = 0;
-            }
-            else{   break ;}
-        }
-        else if(alEvent.type == ALLEGRO_EVENT_MOUSE_AXES)
-        {
-            pox_x=alEvent.mouse.x;
-            pox_y=alEvent.mouse.y;
-        }
-    }
     // Initial game structure
-    gameStructInit(&GAME,&MONSTER,&MONSTER2);
 
     // display = al_create_display(SCREEN_W, SCREEN_H);
     GAME.display = al_create_display(SCREEN_W, SCREEN_H);
@@ -71,8 +38,30 @@ int main( void )
     MONSTER2.monster[0] = al_load_bitmap( "monster.png");
     MONSTER2.monster[1] = al_load_bitmap( "monster2.png");
     GAME.barD_x = SCREEN_W / 2; /* give aming its initial X-coordinate */
-
-    while(1)
+    //all game
+    while(run)
+    {
+    //game introduction
+    while(mode==1)
+    {
+        al_get_mouse_state(&GAME.Mstate);
+        if(al_mouse_button_down(&GAME.Mstate,1)==1)
+        {
+            x=al_get_mouse_state_axis(&GAME.Mstate,0);
+            y=al_get_mouse_state_axis(&GAME.Mstate,1);
+        }
+        while(1)
+        {
+        if(al_mouse_button_down(&GAME.Mstate,1)==0)
+        {
+            xn=al_get_mouse_state_axis(&GAME.Mstate,0);
+            yn=al_get_mouse_state_axis(&GAME.Mstate,1);
+            break;
+        }
+        }
+    }
+    //game start window
+    while(mode==2)
     {
         // al_get_keyboard_state(&KBstate);
         al_get_keyboard_state(&GAME.KBstate);
@@ -101,6 +90,7 @@ int main( void )
         al_clear_to_color(al_map_rgb(0,0,0));
 
         /* Clear the complete target bitmap, but confined by the clipping rectangle. */
+    }
     }
     for (int i=0;i<2;i++)
     al_destroy_bitmap( GAME.right[i]);
