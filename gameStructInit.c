@@ -21,8 +21,16 @@ void gameStructInit(g* gPtr,m* mPtr,m* m2Ptr)
     gPtr->START = NULL;
     gPtr->STAFF = NULL;
     gPtr->OPERATION = NULL;
+    gPtr->BACKTOHOMEPAGE = NULL;
     gPtr->brick = NULL;
     gPtr->display = NULL;
+    gPtr->startpage= NULL;
+    gPtr->d1page1;
+    gPtr->d1page2;
+    gPtr->d1page3;
+    gPtr->d2page;
+    gPtr->d3page1;
+    gPtr->d3page2;
 
     mPtr->xo=390;//monster will start move while aming is right here
     mPtr->yo=440;
