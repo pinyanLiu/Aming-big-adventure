@@ -20,8 +20,8 @@ typedef struct GAME
     int ccount;
     int delay;
     int keydown;//judge if key down
-    int x;
-    int y;
+    int x,xi;
+    int y,yi;
     //int x=100,y=440;
     // bool jump = false;
     bool jump;

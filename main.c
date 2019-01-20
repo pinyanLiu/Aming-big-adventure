@@ -387,7 +387,8 @@ int main( void )
                 //groundthorn
                 groundthorn(&GAME,100,440);
                 groundthorn(&GAME,200,440);
-                groundthorn(&GAME,300,440);
+                //invisiblethorn
+                invisiblethorn(&GAME,300,440);
                 al_rest(0.009);
 
 

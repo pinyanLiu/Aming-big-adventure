@@ -1,20 +1,21 @@
-/*#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "functionlist.h"
 
 
-void invisibleblock(g* gPtr)
+void invisiblethorn(g* gPtr,int xi,int yi)
 {
+
     int i;
     for(i=0;i<50;i++){
-        if (gPtr->barD_y==gPtr->y && gPtr->barD_x==gPtr->x+i)
+        if (gPtr->barD_y==yi&& gPtr->barD_x==xi+i)
+        {
+            al_draw_bitmap(gPtr->gthorn,xi,yi-10,90);
 
-        printf("***");
+        }
 
+    }
 
 }
-
-}*/
-/*撞到後不能再往上，回原本的位置*/
 

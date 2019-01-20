@@ -10,12 +10,14 @@ void gameStructInit(g* gPtr,m* mPtr,m* m2Ptr)
     gPtr->keydown=2;
     gPtr->x=100;
     gPtr->y=440;
+    gPtr->xi=0;
+    gPtr->yi=0;
     gPtr->jump = false;
     gPtr->jumpSpeed = 15;
     gPtr->velX = 0;
     gPtr->velY = 0;
     gPtr->gravity = 1;
-    gPtr->groundHeight = 430;
+    gPtr->groundHeight = 440;
     gPtr->right[gPtr->cur]=NULL;
     gPtr->left[gPtr->cur]=NULL;
     gPtr->START = NULL;
