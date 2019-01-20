@@ -47,3 +47,4 @@ void map_move(g* gPtr){
             }
 
 }
+

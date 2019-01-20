@@ -70,18 +70,56 @@ void moveAming(g* gPtr,int a[],int b[])
 {
     int i;
     if(gPtr->block == 0){
-    gPtr->groundHeight = a[gPtr->barD_x/50];}//控制高度位置在轉軸未轉
+    gPtr->groundHeight = a[gPtr->barD_x/50];}//嚙踝蕭嚙踐高嚙論佗蕭m嚙箭嚙踝蕭b嚙踝蕭嚙踝蕭
     if(gPtr->block == 70){
-        gPtr->groundHeight = a[gPtr->barD_x/50+1];//控制高度位置在轉軸底部
+        gPtr->groundHeight = a[gPtr->barD_x/50+1];//嚙踝蕭嚙踐高嚙論佗蕭m嚙箭嚙踝蕭b嚙踝蕭嚙踝蕭
     }
     if(gPtr->block<70 && gPtr->block>0){
-        gPtr->groundHeight = a[gPtr->barD_x/50+1];//控制高度位置轉軸未轉完
+        gPtr->groundHeight = a[gPtr->barD_x/50+1];//嚙踝蕭嚙踐高嚙論佗蕭m嚙踝蕭b嚙踝蕭嚙賞完
     }
+    //display bitmap
+        if (al_key_down(&gPtr->KBstate, ALLEGRO_KEY_LEFT))
+        {
+            gPtr->keydown=1;
+            if(++gPtr->ccount>=gPtr->delay)
+            {
+                if(++gPtr->cur>=2)
+                    gPtr->cur=0;
+                gPtr->ccount=0;
+            }
+        }
+        if(gPtr->keydown==1)
+        al_draw_bitmap( gPtr->left[gPtr->cur], gPtr->barD_x,gPtr->barD_y, 0);
 
+
+        if (al_key_down(&gPtr->KBstate, ALLEGRO_KEY_RIGHT))
+        {
+            gPtr->keydown=2;
+            if(++gPtr->ccount>=gPtr->delay)
+            {
+                if(++gPtr->cur>=2)
+                    gPtr->cur=0;
+                gPtr->ccount=0;
+            }
+        }
+        if(gPtr->keydown==2)
+        al_draw_bitmap( gPtr->right[gPtr->cur], gPtr->barD_x,gPtr->barD_y, 0);
+
+    if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_UP) && gPtr->jump && al_key_down(&gPtr->KBstate, ALLEGRO_KEY_LEFT))
+    {
+        al_draw_bitmap( gPtr->leftjump, gPtr->barD_x,gPtr->barD_y, 0);
+    }
+    if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_UP) && gPtr->jump && al_key_down(&gPtr->KBstate, ALLEGRO_KEY_RIGHT))
+    {
+        al_draw_bitmap( gPtr->rightjump, gPtr->barD_x,gPtr->barD_y, 0);
+    }
     // if (al_key_down(&KBstate, ALLEGRO_KEY_LEFT)) barD_x -= PADDLE_MOVE;
     if (al_key_down(&gPtr->KBstate, ALLEGRO_KEY_LEFT))
+    {
         gPtr->barD_x -= PADDLE_MOVE;
         if(gPtr->barD_y > a[gPtr->barD_x/50+1] )gPtr->barD_x += PADDLE_MOVE;
+
+    }
 
     // if (al_key_down(&KBstate, ALLEGRO_KEY_RIGHT)) barD_x += PADDLE_MOVE;
     if (al_key_down(&gPtr->KBstate, ALLEGRO_KEY_RIGHT))
@@ -119,9 +157,6 @@ void moveAming(g* gPtr,int a[],int b[])
         // barD_y = groundHeight;
         gPtr->barD_y = gPtr->groundHeight;
     }
-
-    // if (al_key_down(&KBstate, ALLEGRO_KEY_SPACE)) barD_x -= PADDLE_MOVE; /*JUMP*/
-
     // if (barD_x < 0)
     if (gPtr->barD_x < 0)
         // barD_x =0; /* make sure the paddles don go off screen */
@@ -132,42 +167,3 @@ void moveAming(g* gPtr,int a[],int b[])
         // barD_x =620; /* make sure the paddles don go off screen */
         gPtr->barD_x =500; /* make sure the paddles don go off screen */
 }
-/*void game(struct GAME* gamePtr)
-{
-
-}*/
-void gameStructInit(g* gPtr,m*mPtr)
-{
-    gPtr->x=100;
-    gPtr->y=350;//起始高度
-    gPtr->jump = false;
-    gPtr->jumpSpeed = 15;
-    gPtr->velX = 0;
-    gPtr->velY = 0;
-    gPtr->gravity = 0.5;
-    gPtr->groundHeight = 350;//地面高度
-    gPtr->brick = NULL;
-    gPtr->display = NULL;
-    gPtr->step =0;//地圖顯示需要
-    gPtr->block =0;
-    gPtr->life = 20;
-    gPtr->pass = 0;
-    gPtr->mapcontral = 1;
-    gPtr->stopblock = 58;
-    gPtr->cur=0;
-    gPtr->ccount=0;
-    gPtr->delay=5;
-    gPtr->keydown=2;
-    gPtr->dead = false;
-    mPtr->xo=250;//monster will start move while aming is right here
-    mPtr->yo=350;//地面高度
-    mPtr->xm=500;//location of monster
-    mPtr->ym=350;//地面高度
-    mPtr->monster[1] = NULL;
-    mPtr->monster[0] = NULL;
-    //mvptr[11]->groundhigh =350;
-   // mvptr[11]->locate_left = NULL;
-    //mvptr[11]->locate_right = NULL;
-}
-
-
