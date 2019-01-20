@@ -7,6 +7,8 @@
 int main( void )
 {
     g GAME;
+    m MONSTER,MONSTER2,MONSTER3;
+
     m MONSTER,MONSTER2;
     gameStructInit(&GAME,&MONSTER,&MONSTER2);
     int mode=1;//mode=1 game introduction,mode=2 game start window,mode=3 staff,mode=4 operation,mode=5 return 0
@@ -23,6 +25,7 @@ int main( void )
     al_init_image_addon();
     //int a;//the var of while
     // Initial game structure
+    gameStructInit(&GAME,&MONSTER,&MONSTER2,&MONSTER3);
 
     // display = al_create_display(SCREEN_W, SCREEN_H);
     GAME.display = al_create_display(SCREEN_W, SCREEN_H);
@@ -55,6 +58,8 @@ int main( void )
     MONSTER.monster[1] = al_load_bitmap( "monster2.png");
     MONSTER2.monster[0] = al_load_bitmap( "monster.png");
     MONSTER2.monster[1] = al_load_bitmap( "monster2.png");
+    MONSTER3.rocket = al_load_bitmap( "rocket.png");
+    MONSTER3.superman= al_load_bitmap( "superman.png");
     GAME.barD_x = SCREEN_W / 2; /* give aming its initial X-coordinate */
     //all game
     while(run)

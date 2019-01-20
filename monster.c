@@ -17,13 +17,17 @@ void monster(m* mPtr, g* gPtr){
             }
         al_draw_bitmap(mPtr->monster[gPtr->cur], mPtr->xm,mPtr->ym,0);
 
-       }
-        /*if(mPtr->xm==0){
-                 mPtr->monsterMove=2;}
-         if(mPtr->monsterMove==2){
-            mPtr->xm=mPtr->xm+3;
-        al_draw_bitmap(mPtr->monster2, mPtr->xm,mPtr->ym,0);
- }*/
+       }for(int i=0;i<50;i++){
+    if(gPtr->barD_y==mPtr->ym+i)
+        mPtr->b=1;
+        if(mPtr->b==1){
+    if(gPtr->barD_x==mPtr->xm){
+    gPtr->barD_y=500;
+    deadway(gPtr);
+     }
+     }
+
+}
 
 }
 

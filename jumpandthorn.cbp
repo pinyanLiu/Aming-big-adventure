@@ -116,6 +116,9 @@
 		<Unit filename="monster.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="monsterMove.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="moveAming.c">
 			<Option compilerVar="CC" />
 		</Unit>
