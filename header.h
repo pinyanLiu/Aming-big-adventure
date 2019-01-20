@@ -99,6 +99,10 @@ typedef struct GAME
     ALLEGRO_BITMAP *d3page1;
     ALLEGRO_BITMAP *d3page2;//遊戲畫面
 
+    ALLEGRO_BITMAP *P1;
+    ALLEGRO_BITMAP *P2;
+    ALLEGRO_BITMAP *P3;
+
     ALLEGRO_BITMAP *Dead;
 
     ALLEGRO_BITMAP* background  ;

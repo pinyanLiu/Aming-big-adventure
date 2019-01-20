@@ -45,12 +45,12 @@ void map_display(int a,int i,g* gPtr,m* mPtr){
                 if(a == 8){
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,450,0);
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,400,0);
-                        al_draw_bitmap(gPtr->grassthorn,50*i-gPtr->step,350,0);
+                        al_draw_bitmap(gPtr->grass,50*i-gPtr->step,350,0);
                 }
                 if(a == 9){
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,450,0);
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,400,0);
-                        al_draw_bitmap(gPtr->grassthorn,50*i-gPtr->step,350,0);
+                        al_draw_bitmap(gPtr->grass,50*i-gPtr->step,350,0);
                         al_draw_bitmap(gPtr->question,50*i-gPtr->step,250,0);
                 }
                 if(a == 10){
@@ -83,7 +83,7 @@ void map_display(int a,int i,g* gPtr,m* mPtr){
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,450,0);
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,400,0);
                         al_draw_bitmap(gPtr->pipeshort,50*i-gPtr->step,300,0);
-                        al_draw_bitmap(gPtr->cloudthorn,50*i-gPtr->step,100,0);
+                        al_draw_bitmap(gPtr->cloud,50*i-gPtr->step,100,0);
                 }
 
 
@@ -103,7 +103,7 @@ void map_display(int a,int i,g* gPtr,m* mPtr){
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,450,0);
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,400,0);
                         al_draw_bitmap(gPtr->question,50*i-gPtr->step,250,0);//踩在問號上面生刺
-                        al_draw_bitmap(gPtr->groundthorn,50*i-gPtr->step,225,0);
+
                 }
 
                  if(a == 19){
@@ -111,7 +111,7 @@ void map_display(int a,int i,g* gPtr,m* mPtr){
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,450,0);
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,400,0);
                         al_draw_bitmap(gPtr->question,50*i-gPtr->step,250,0);
-                        al_draw_bitmap(gPtr->topthorn,50*i-gPtr->step,300,0);
+
 
                 }
 
@@ -158,13 +158,13 @@ void map_display(int a,int i,g* gPtr,m* mPtr){
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,400,0);
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,350,0);
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,150,0);
-                        al_draw_bitmap(gPtr->topthorn,50*i-gPtr->step,200,0);
+
                 }
                 if(a == 29){
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,450,0);
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,400,0);
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,350,0);
-                        al_draw_bitmap(gPtr->grassthorn,50*i-gPtr->step,300,0);//草刺
+                        al_draw_bitmap(gPtr->grass,50*i-gPtr->step,300,0);//草刺
                 }
                 if(a == 30){
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,450,0);
@@ -201,7 +201,6 @@ void map_display(int a,int i,g* gPtr,m* mPtr){
                 if(a == 35){
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,450,0);
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,400,0);
-                        al_draw_bitmap(gPtr->groundthorn,50*i-gPtr->step,375,0);
                         al_draw_bitmap(gPtr->trustyourself,50*i-gPtr->step,300,0);
                 }
                 if(a == 36){
@@ -225,20 +224,20 @@ void map_display(int a,int i,g* gPtr,m* mPtr){
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,450,0);
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,400,0);
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,350,0);
-                        al_draw_bitmap(gPtr->pillfake,50*i-gPtr->step,300,0);
+                        al_draw_bitmap(gPtr->pill,50*i-gPtr->step,300,0);
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,150,0);
-                        al_draw_bitmap(gPtr->topthorn,50*i-gPtr->step,200,0);
+
                 }
                 if(a == 41){
                         al_draw_bitmap(gPtr->Empty,50*i-gPtr->step,400,0);
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,250,0);
-                        al_draw_bitmap(gPtr->groundthorn,50*i-gPtr->step,225,0);//隱地浮空專刺
+                                                                        //隱地浮空專刺
                 }
                 if(a == 42){
                         al_draw_bitmap(gPtr->Empty,50*i-gPtr->step,450,0);
                         al_draw_bitmap(gPtr->Empty,50*i-gPtr->step,400,0);
                         al_draw_bitmap(gPtr->question,50*i-gPtr->step,250,0);
-                        al_draw_bitmap(gPtr->topthorn,50*i-gPtr->step,300,0);//隱地浮空問刺
+                                                                            //隱地浮空問刺
                 }
                 if(a == 43){
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,250,0);//隱地浮空專
@@ -276,7 +275,7 @@ void map_display(int a,int i,g* gPtr,m* mPtr){
                 if(a == 50){
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,450,0);
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,400,0);
-                        al_draw_bitmap(gPtr->groundthorn,50*i-gPtr->step,375,0);//純地刺
+
                 }
                 if(a == 51){
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,400,0);
@@ -287,7 +286,7 @@ void map_display(int a,int i,g* gPtr,m* mPtr){
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,450,0);
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,400,0);
                         al_draw_bitmap(gPtr->question,50*i-gPtr->step,250,0);
-                        al_draw_bitmap(gPtr->grassthorn,50*i-gPtr->step,350,0);
+                        al_draw_bitmap(gPtr->grass,50*i-gPtr->step,350,0);
 
                 }
 

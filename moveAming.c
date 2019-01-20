@@ -65,31 +65,6 @@ int groundhigh(int a,g* gPtr)
  if(a == 53){return 0;}
  }
 
- /*void hitbrick(g*gPtr,int a,int i){
- if(a == 2){if(gPtr->barD_x == 50*i-gPtr->step)
-        if(gPtr->barD_y > 300 && gPtr->barD_y < 302){ gPtr->jump  = true;}
-             }
- /*if(a == 3){if(gPtr->barD_y >300)return 200;
-             return 350;}
- if(a == 4){if(gPtr->barD_y <=50)return 50;
-            else if(gPtr->barD_y <= 200)return 200;
-            else return 350;}
- if(a == 9){if(gPtr->barD_y <=200)return 200;else return 350;}
- if(a == 17){if(gPtr->barD_y <=210)return 200;else return 350;}
- if(a == 18){if(gPtr->barD_y <=210)return 200;else return 350;}
- if(a == 19){if(gPtr->barD_y<=100)return 100;else return 350;}
- if(a == 24){if(gPtr->barD_y <= 200)return 200;else return 350;}
- if(a == 26){if(gPtr->barD_y <= 200)return 200;else return 500;}
- if(a == 28){if(gPtr->barD_y <=100)return 100; else return 300;}
- if(a == 29){if(gPtr->barD_y <=100)return 100; else return 300;}
- if(a == 31){if(gPtr->barD_y<=150)return 150;else return 350;}
- if(a == 40){if(gPtr->barD_y<=100)return 100; else return 300;}
- if(a == 41){if(gPtr->barD_y<=200)return 200;else return 350;}
- if(a == 42){if(gPtr->barD_y<=200)return 200;else return 350;}
- if(a == 43){if(gPtr->barD_y<=200)return 200;else return 350;}
- if(a == 44){if(gPtr->barD_y<=100)return 100;else return 350;}
- if(a == 46){if(gPtr->barD_y<=100)return 100;else return 350;}
-}*/
 
 void moveAming(g* gPtr,int a[],int b[])
 {
@@ -175,7 +150,7 @@ void gameStructInit(g* gPtr,m*mPtr)
     gPtr->display = NULL;
     gPtr->step =0;//地圖顯示需要
     gPtr->block =0;
-    gPtr->life = 3;
+    gPtr->life = 20;
     gPtr->pass = 0;
     gPtr->mapcontral = 1;
     gPtr->stopblock = 58;

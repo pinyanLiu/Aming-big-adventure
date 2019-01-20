@@ -17,7 +17,7 @@ int main( void )
     g GAME;
     m MONSTER;
     int array_high[11];
-    int array_hit[11];
+    int array_dead[11];
     /*mv mapvalue;//定義地圖陣列
     /* first, set up Allegro and the graphics mode */
     al_init(); /* initialize Allegro */
@@ -77,6 +77,9 @@ int main( void )
     GAME.d2page = al_load_bitmap( "d2page.png");
     GAME.d3page1 = al_load_bitmap( "d3page1.png");
     GAME.d3page2 = al_load_bitmap( "d3page2.png");
+    GAME.P1 = al_load_bitmap( "P1.png");
+    GAME.P2 = al_load_bitmap( "P2.png");
+    GAME.P3 = al_load_bitmap( "P3.png");
     GAME.NEXTPAGE = al_load_bitmap( "NEXTPAGE.png");
     GAME.OPERATIONS = al_load_bitmap( "OPERATIONS.png");
     GAME.stafflist = al_load_bitmap( "stafflist.png");
@@ -100,7 +103,7 @@ int main( void )
         al_get_keyboard_state(&GAME.KBstate);
         // if (al_key_down(&KBstate, ALLEGRO_KEY_ESCAPE))
         if (al_key_down(&GAME.KBstate, ALLEGRO_KEY_ESCAPE))
-                break;
+                mode = 5;
         while(mode==1)
         {
             /*al_get_keyboard_state(&GAME.KBstate);
@@ -317,7 +320,7 @@ int main( void )
             // if (al_key_down(&KBstate, ALLEGRO_KEY_ESCAPE))
             if (al_key_down(&GAME.KBstate, ALLEGRO_KEY_ESCAPE))
             break;
-            while(1)
+            while(run)
             {
             // al_get_keyboard_state(&KBstate);
             al_get_keyboard_state(&GAME.KBstate);
@@ -346,10 +349,7 @@ int main( void )
             /*for(i = 0;i<11;i++){
             hitbrick(&GAME,map[i],i);
             }*/
-            deadway(&GAME);
-            if(GAME.dead == true ){
-                break;
-            }
+
             //死亡判定
             for(a = 0;a<11;a++){
             if(map[a] == 21){
@@ -357,12 +357,18 @@ int main( void )
             if(GAME.pass == 1)break;
             }//過關判斷
             peopledisplay(&GAME);
+            deadway(&GAME,&MONSTER,map);
             //al_draw_bitmap( GAME.left[], GAME.barD_x,GAME.barD_y, 0);
             al_rest(0.01);
+
             al_draw_textf( GAME.pongFont, al_map_rgb(0, 0, 0), 50, 50, -1, "life : %d", GAME.life);//顯示生命數
             /* display */
             al_flip_display(); /* Wait for the beginning of a vertical retrace. */
             al_clear_to_color(al_map_rgb(0,0,0));
+
+            if(GAME.dead == true ){
+                break;
+            }
             if(GAME.pass != 0){
                 GAME.mapcontral++;
                 break;
@@ -467,17 +473,16 @@ int main( void )
                     /*for(i = 0;i<11;i++){
                     hitbrick(&GAME,map[i],i);
                     }*/
-                    deadway(&GAME);
-                    if(GAME.dead == true ){
-                    break;
-                    }
-                    //死亡判定
+
                     for(a = 0;a<11;a++){
                     if(map[a] == 21){
                     GAME.pass = pass(&GAME,a);}
                     if(GAME.pass == 1)break;
                     }//過關判斷
                     peopledisplay(&GAME);
+                    deadway(&GAME,&MONSTER,map);
+
+                    //死亡判定
                     //al_draw_bitmap( GAME.left[], GAME.barD_x,GAME.barD_y, 0);
                     al_rest(0.01);
                     al_draw_textf( GAME.pongFont, al_map_rgb(0, 0, 0), 50, 50, -1, "life : %d", GAME.life);//顯示生命數
@@ -485,6 +490,9 @@ int main( void )
 
                     al_flip_display(); /* Wait for the beginning of a vertical retrace. */
                     al_clear_to_color(al_map_rgb(0,0,0));
+                    if(GAME.dead == true ){
+                    break;
+                    }
                     if(GAME.pass != 0){
                     GAME.mapcontral++;
                     break;
@@ -600,7 +608,7 @@ int main( void )
             al_clear_to_color(al_map_rgb(0,0,0));
         }
         //game stage3 start loop
-        while(mode2=8)
+        while(mode2 == 8)
         {
             //yumin put the game main stage3 here
             while(GAME.life != 0){
@@ -640,17 +648,15 @@ int main( void )
         /*for(i = 0;i<11;i++){
         hitbrick(&GAME,map[i],i);
         }*/
-         deadway(&GAME);
-         if(GAME.dead == true ){
-            break;
-         }
         //死亡判定
         for(a = 0;a<11;a++){
         if(map[a] == 21){
         GAME.pass = pass(&GAME,a);}
+
         if(GAME.pass == 1)break;
         }//過關判斷
         peopledisplay(&GAME);
+       deadway(&GAME,&MONSTER,map);
        //al_draw_bitmap( GAME.left[], GAME.barD_x,GAME.barD_y, 0);
        al_rest(0.01);
         al_draw_textf( GAME.pongFont, al_map_rgb(0, 0, 0), 50, 50, -1, "life : %d", GAME.life);//顯示生命數
@@ -661,6 +667,9 @@ int main( void )
             GAME.mapcontral++;
             break;
         }//換關
+         if(GAME.dead == true ){
+            break;
+         }//死亡
          //Clear the complete target bitmap, but confined by the clipping rectangle.
         }//遊戲內決定生死
         al_get_keyboard_state(&GAME.KBstate);
@@ -668,22 +677,152 @@ int main( void )
         if (al_key_down(&GAME.KBstate, ALLEGRO_KEY_ESCAPE))
             break;
         if(GAME.dead == true){savepoint(&GAME);}
-        if(GAME.mapcontral == 4){break;}
+        if(GAME.mapcontral == 4){mode2 = 9;break;}
         if(GAME.life == 0){break;}
         al_rest(1);
             }
-        if(GAME.mapcontral == 4){break;}
         if(GAME.life == 0){break;}
         }       /* Clear the complete target bitmap, but confined by the clipping rectangle. */
 
-    al_clear_to_color(al_map_rgb(0,0,0));
-    if(GAME.life == 0){mode = 1;
-     al_draw_bitmap(GAME.Dead,0,0,0);
-     al_flip_display();
-     al_rest(3);
-    break;}
-    if(GAME.mapcontral == 4){mode = 5;break;}
-    al_clear_to_color(al_map_rgb(0,0,0));
+            while(mode2==9)
+            {
+                al_draw_bitmap(GAME.P1,0,0,0);
+                al_draw_bitmap(GAME.NEXTPAGE,375,400,0);
+                al_get_mouse_state(&GAME.MSstate);
+                if(al_mouse_button_down(&GAME.MSstate,1) == 1)
+                {
+
+                    x=al_get_mouse_state_axis(&GAME.MSstate,0);
+                    y=al_get_mouse_state_axis(&GAME.MSstate,1);
+
+                    while(1)
+                    {
+                        al_get_mouse_state(&GAME.MSstate);
+                        if(al_mouse_button_down(&GAME.MSstate,1)==0)
+                        {
+                            xn=al_get_mouse_state_axis(&GAME.MSstate,0);
+                            yn=al_get_mouse_state_axis(&GAME.MSstate,1);
+                            break;
+                        }
+                    }
+                    //use mouse to press NEXTPAGE
+                    for(i=0; i<=100; i++)
+                    {
+                        if(x==375+i)
+                            e=1;
+                    }
+                    for(j=0; j<=50; j++)
+                    {
+                        if(y==400+j)
+                            r=1;
+                    }
+
+                    if(e==r)
+                    {
+                        e=0;
+                        r=0;
+
+                        mode2=10;
+                    }
+                }
+                 al_flip_display(); /* Wait for the beginning of a vertical retrace. */
+            al_clear_to_color(al_map_rgb(0,0,0));
+            }
+                while(mode2==10)
+                {
+                al_draw_bitmap(GAME.P2,0,0,0);
+                al_draw_bitmap(GAME.NEXTPAGE,375,400,0);
+                al_get_mouse_state(&GAME.MSstate);
+                if(al_mouse_button_down(&GAME.MSstate,1)==1)
+                {
+
+                    x=al_get_mouse_state_axis(&GAME.MSstate,0);
+                    y=al_get_mouse_state_axis(&GAME.MSstate,1);
+
+                    while(1)
+                    {
+                        al_get_mouse_state(&GAME.MSstate);
+                        if(al_mouse_button_down(&GAME.MSstate,1)==0)
+                        {
+                            xn=al_get_mouse_state_axis(&GAME.MSstate,0);
+                            yn=al_get_mouse_state_axis(&GAME.MSstate,1);
+                            break;
+                        }
+                    }
+                    //use mouse to press NEXTPAGE
+                    for(i=0; i<=100; i++)
+                    {
+                        if(x==375+i)
+                            e=1;
+                    }
+                    for(j=0; j<=50; j++)
+                    {
+                        if(y==400+j)
+                            r=1;
+                    }
+
+                    if(e==r)
+                    {
+                        e=0;
+                        r=0;
+
+                        mode2=11;
+                    }
+                }
+                 al_flip_display(); /* Wait for the beginning of a vertical retrace. */
+            al_clear_to_color(al_map_rgb(0,0,0));
+                }
+                while(mode2==11)
+                {
+                al_draw_bitmap(GAME.P3,0,0,0);
+                al_draw_bitmap(GAME.BACKTOHOMEPAGE,375,400,0);
+                al_get_mouse_state(&GAME.MSstate);
+                if(al_mouse_button_down(&GAME.MSstate,1)==1)
+                {
+
+                    x=al_get_mouse_state_axis(&GAME.MSstate,0);
+                    y=al_get_mouse_state_axis(&GAME.MSstate,1);
+
+                    while(1)
+                    {
+                        al_get_mouse_state(&GAME.MSstate);
+                        if(al_mouse_button_down(&GAME.MSstate,1)==0)
+                        {
+                            xn=al_get_mouse_state_axis(&GAME.MSstate,0);
+                            yn=al_get_mouse_state_axis(&GAME.MSstate,1);
+                            break;
+                        }
+                    }
+                    //use mouse to press NEXTPAGE
+                    for(i=0; i<=100; i++)
+                    {
+                        if(x==375+i)
+                            e=1;
+                    }
+                    for(j=0; j<=50; j++)
+                    {
+                        if(y==400+j)
+                            r=1;
+                    }
+
+                    if(e==r)
+                    {
+                        e=0;
+                        r=0;
+                        mode = 1;
+                        mode2 = 12;
+                    }
+                }
+                 al_flip_display(); /* Wait for the beginning of a vertical retrace. */
+            al_clear_to_color(al_map_rgb(0,0,0));
+                }
+        if(GAME.life == 0){
+        al_draw_bitmap(GAME.Dead,0,0,0);
+        al_flip_display();
+        mode = 1;
+        al_rest(1);
+        al_clear_to_color(al_map_rgb(0,0,0));
+        }
     }
     while(mode==3)
     {
@@ -779,18 +918,8 @@ int main( void )
         al_flip_display(); /* Wait for the beginning of a vertical retrace. */
         al_clear_to_color(al_map_rgb(0,0,0));
     }
-    if(GAME.mapcontral == 4){mode =1;}
-    gameStructInit(&GAME,&MONSTER);
-     mode2=0;//the page in mode two
-     run=1;//run=0 game over
-     x=0,y=0;//the axis of mouse
-     xn=1000,yn=1000;
-     i=0,j=0;//counter
-     q=0,w=0,e=0,r=0;//var
-
-
-} /* end function main */
- al_destroy_bitmap( GAME.right[0]);
+    while(mode == 5){
+        al_destroy_bitmap( GAME.right[0]);
     al_destroy_bitmap( GAME.right[1]);
     al_destroy_bitmap( GAME.left[0]);
     al_destroy_bitmap( GAME.left[1]);
@@ -803,6 +932,8 @@ int main( void )
     al_destroy_bitmap( MONSTER.monster[0]);
     al_destroy_bitmap( MONSTER.monster[1]);
     al_destroy_bitmap(GAME.background);
+    al_destroy_bitmap(GAME.background2);
+    al_destroy_bitmap(GAME.background3);
     al_destroy_bitmap(GAME.cloud);
     al_destroy_bitmap(GAME.cloudthorn);
     al_destroy_bitmap(GAME.gaygay);
@@ -822,7 +953,7 @@ int main( void )
     al_destroy_bitmap(GAME.truehere);
     al_destroy_bitmap(GAME.trustyourself);
     al_destroy_bitmap(GAME.Empty);
-
+    al_destroy_bitmap(GAME.Dead);
     al_destroy_bitmap( GAME.startpage);
     al_destroy_bitmap( GAME.d1page1);
     al_destroy_bitmap( GAME.d1page2);
@@ -830,14 +961,30 @@ int main( void )
     al_destroy_bitmap( GAME.d2page);
     al_destroy_bitmap( GAME.d3page1);
     al_destroy_bitmap( GAME.d3page2);
+    al_destroy_bitmap( GAME.P1);
+    al_destroy_bitmap( GAME.P2);
+    al_destroy_bitmap( GAME.P3);
     al_destroy_bitmap( GAME.START);
     al_destroy_bitmap( GAME.OPERATION);
     al_destroy_bitmap( GAME.NEXTPAGE);
     al_destroy_bitmap( GAME.STAFF);
     al_destroy_bitmap( GAME.BACKTOHOMEPAGE);
-    al_destroy_bitmap(GAME.pongFont);
+    al_destroy_font(GAME.pongFont);
 
     al_destroy_bitmap( GAME.OPERATIONS);
     al_destroy_bitmap( GAME.NEXTPAGE);
     return 0;
+    }
+    if(GAME.mapcontral == 4){mode = 1;}
+    gameStructInit(&GAME,&MONSTER);
+     mode2=0;//the page in mode two
+     run=1;//run=0 game over
+     x=0,y=0;//the axis of mouse
+     xn=1000,yn=1000;
+     i=0,j=0;//counter
+     q=0,w=0,e=0,r=0;//var
+
+
+} /* end function main */
+
 }
