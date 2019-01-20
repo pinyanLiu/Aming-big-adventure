@@ -19,3 +19,4 @@ void choosemap(g*gPtr){
         gPtr->stopblock = 66;
     }
 }
+

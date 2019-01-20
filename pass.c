@@ -8,3 +8,4 @@ int pass(g* gPtr,int i){
     return 1;
     else return 0;
 }
+

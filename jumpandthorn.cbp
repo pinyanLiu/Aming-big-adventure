@@ -14,11 +14,10 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="D:/Allegro/allegro-mingw-gcc5.3.0-x86-static-5.2.1.1/include" />
-					<Add directory="C:/allegro-mingw-gcc5.3.0-x86-static-5.2.1.1/include" />
 				</Compiler>
 				<Linker>
-					<Add option="-static-libgcc" />
 					<Add option="-static" />
+					<Add option="-static-libgcc" />
 					<Add library="liballegro_monolith-static.a" />
 					<Add library="libvorbisfile.a" />
 					<Add library="libvorbis.a" />
@@ -48,7 +47,6 @@
 					<Add library="libcomdlg32.a" />
 					<Add library="libadvapi32.a" />
 					<Add directory="D:/Allegro/allegro-mingw-gcc5.3.0-x86-static-5.2.1.1/lib" />
-					<Add directory="C:/allegro-mingw-gcc5.3.0-x86-static-5.2.1.1/lib" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -67,11 +65,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add directory="D:/allegro-mingw-gcc5.3.0-x86-static-5.2.1.1/include" />
-			<Add directory="C:/allegro-mingw-gcc5.3.0-x86-static-5.2.1.1/include" />
 		</Compiler>
 		<Linker>
-			<Add option="-static-libgcc" />
 			<Add option="-static" />
+			<Add option="-static-libgcc" />
 			<Add library="liballegro_monolith-static.a" />
 			<Add library="libvorbisfile.a" />
 			<Add library="libvorbis.a" />
@@ -101,15 +98,8 @@
 			<Add library="libcomdlg32.a" />
 			<Add library="libadvapi32.a" />
 			<Add directory="D:/allegro-mingw-gcc5.3.0-x86-static-5.2.1.1/lib" />
-			<Add directory="C:/allegro-mingw-gcc5.3.0-x86-static-5.2.1.1/lib" />
 		</Linker>
-		<Unit filename="choosemap.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="deadjection.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="fall.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="functionlist.h" />
@@ -126,12 +116,6 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="map_display.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="map_move.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="monster.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -139,15 +123,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="moveAming.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="pass.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="peopledisplay.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="savepoint.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>

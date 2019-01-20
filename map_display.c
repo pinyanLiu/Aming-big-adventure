@@ -303,3 +303,4 @@ void map_display(int a,int i,g* gPtr,m* mPtr){
                 }
 
 }
+

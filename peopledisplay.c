@@ -28,7 +28,7 @@ void peopledisplay(g*gPtr){
         }
         if(gPtr->keydown==2)
         al_draw_bitmap( gPtr->right[gPtr->cur], gPtr->barD_x,gPtr->barD_y, 0);
-        //��ܹϮ�
+        //¿ï¾Ü¹Ï®×
         if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_J) && gPtr->jump && al_key_down(&gPtr->KBstate, ALLEGRO_KEY_LEFT))
         {
             al_draw_bitmap( gPtr->leftjump, gPtr->barD_x,gPtr->barD_y, 0);
@@ -38,3 +38,4 @@ void peopledisplay(g*gPtr){
             al_draw_bitmap( gPtr->rightjump, gPtr->barD_x,gPtr->barD_y, 0);
         }
 }
+

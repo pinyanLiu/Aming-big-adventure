@@ -786,7 +786,7 @@ int main( void )
         al_clear_to_color(al_map_rgb(0,0,0));
     }
     if(GAME.mapcontral == 4){mode =1;}
-    gameStructInit(&GAME,&MONSTER);
+    gameStructInit(&GAME,&MONSTER,&MONSTER2,&MONSTER3);
      mode2=0;//the page in mode two
      run=1;//run=0 game over
      x=0,y=0;//the axis of mouse
@@ -850,40 +850,3 @@ int main( void )
 
 
 
-    while(mode==5)
-    {
-        al_destroy_bitmap( GAME.startpage);
-        al_destroy_bitmap( GAME.d1page1);
-        al_destroy_bitmap( GAME.d1page2);
-        al_destroy_bitmap( GAME.d1page3);
-        al_destroy_bitmap( GAME.d2page);
-        al_destroy_bitmap( GAME.d3page1);
-        al_destroy_bitmap( GAME.d3page2);
-        al_destroy_bitmap( GAME.START);
-        al_destroy_bitmap( GAME.OPERATION);
-        al_destroy_bitmap( GAME.NEXTPAGE);
-        al_destroy_bitmap( GAME.STAFF);
-        al_destroy_bitmap( GAME.BACKTOHOMEPAGE);
-        for (int i=0; i<2; i++)
-            al_destroy_bitmap( GAME.right[i]);
-        for (int i=0; i<2; i++)
-            al_destroy_bitmap( GAME.left[i]);
-        // al_destroy_display();
-        al_destroy_bitmap( GAME.rightjump);
-        al_destroy_bitmap( GAME.leftjump);
-        // al_destroy_display( display); /* destroy the display */
-        al_destroy_bitmap( GAME.brick);
-        al_destroy_bitmap( GAME.gthorn);
-        al_destroy_bitmap( GAME.gthorn);
-        al_destroy_bitmap( GAME.OPERATIONS);
-        al_destroy_bitmap( GAME.NEXTPAGE);
-        al_destroy_display( GAME.display);/* destroy the display */
-        for (int i=0; i<2; i++)
-            al_destroy_bitmap( MONSTER.monster[i]);
-        for (int i=0; i<2; i++)
-            al_destroy_bitmap( MONSTER2.monster[i]);
-
-        return 0;
-    }
-}
-}/* end function main */

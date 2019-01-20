@@ -4,20 +4,28 @@
 
 void gameStructInit(g* gPtr,m* mPtr,m* m2Ptr,m* m3Ptr)
 {
-    gPtr->cur=0;
+    gPtr->x=100;
+    gPtr->y=350;
+     gPtr->jump = false;
+     gPtr->jumpSpeed = 15;
+     gPtr->velX = 0;
+     gPtr->velY = 0;
+      gPtr->gravity = 0.5;
+     gPtr->groundHeight = 350;
+     gPtr->brick = NULL;
+    gPtr->display = NULL;
+     gPtr->step =0;//�a����ܻݭn
+    gPtr->block =0;
+    gPtr->life = 3;
+    gPtr->pass = 0;
+    gPtr->mapcontral = 1;
+    gPtr->stopblock = 58;
+     gPtr->xi=0;
+    gPtr->yi=0;
+   gPtr->cur=0;
     gPtr->ccount=0;
     gPtr->delay=5;
     gPtr->keydown=2;
-    gPtr->x=100;
-    gPtr->y=440;
-    gPtr->xi=0;
-    gPtr->yi=0;
-    gPtr->jump = false;
-    gPtr->jumpSpeed = 15;
-    gPtr->velX = 0;
-    gPtr->velY = 0;
-    gPtr->gravity = 1;
-    gPtr->groundHeight = 430;
     gPtr->dead = false;
     gPtr->life = 3;
     gPtr->right[gPtr->cur]=NULL;
@@ -26,8 +34,6 @@ void gameStructInit(g* gPtr,m* mPtr,m* m2Ptr,m* m3Ptr)
     gPtr->STAFF = NULL;
     gPtr->OPERATION = NULL;
     gPtr->BACKTOHOMEPAGE = NULL;
-    gPtr->brick = NULL;
-    gPtr->display = NULL;
     gPtr->startpage= NULL;
     gPtr->d1page1;
     gPtr->d1page2;
