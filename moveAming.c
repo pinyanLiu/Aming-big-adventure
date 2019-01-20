@@ -33,11 +33,11 @@ void moveAming(g* gPtr)
         if(gPtr->keydown==2)
         al_draw_bitmap( gPtr->right[gPtr->cur], gPtr->barD_x,gPtr->barD_y, 0);
 
-    if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_J) && gPtr->jump && al_key_down(&gPtr->KBstate, ALLEGRO_KEY_LEFT))
+    if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_UP) && gPtr->jump && al_key_down(&gPtr->KBstate, ALLEGRO_KEY_LEFT))
     {
         al_draw_bitmap( gPtr->leftjump, gPtr->barD_x,gPtr->barD_y, 0);
     }
-    if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_J) && gPtr->jump && al_key_down(&gPtr->KBstate, ALLEGRO_KEY_RIGHT))
+    if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_UP) && gPtr->jump && al_key_down(&gPtr->KBstate, ALLEGRO_KEY_RIGHT))
     {
         al_draw_bitmap( gPtr->rightjump, gPtr->barD_x,gPtr->barD_y, 0);
     }
@@ -52,16 +52,8 @@ void moveAming(g* gPtr)
     {
         gPtr->barD_x += PADDLE_MOVE;
     }
-    if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_J) && gPtr->jump && al_key_down(&gPtr->KBstate, ALLEGRO_KEY_LEFT))
-    {
-        al_draw_bitmap( gPtr->leftjump, gPtr->barD_x,gPtr->barD_y, 0);
-    }
-    if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_J) && gPtr->jump && al_key_down(&gPtr->KBstate, ALLEGRO_KEY_RIGHT))
-    {
-        al_draw_bitmap( gPtr->rightjump, gPtr->barD_x,gPtr->barD_y, 0);
-    }
     // if(al_key_down(&KBstate, ALLEGRO_KEY_J) && jump)
-    if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_J) && gPtr->jump)//JUMP 104
+    if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_UP) && gPtr->jump)//JUMP 104
     {
         // velY = -jumpSpeed;
         gPtr->velY = -gPtr->jumpSpeed;
