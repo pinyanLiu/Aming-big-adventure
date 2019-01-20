@@ -20,8 +20,8 @@ typedef struct GAME
     int ccount;
     int delay;
     int keydown;//judge if key down
-    int x,xb;
-    int y,yb;
+    int x,xi;
+    int y,yi;
     //int x=100,y=440;
     // bool jump = false;
     bool jump;
@@ -34,12 +34,15 @@ typedef struct GAME
     float gravity;
     // const int groundHeight = 545;
     int groundHeight;
+    ALLEGRO_MOUSE_STATE MSstate;
     int life;
     bool dead;
-    ALLEGRO_EVENT alEvent;
-    ALLEGRO_EVENT_QUEUE* alEventQueue;
-    ALLEGRO_MOUSE_STATE Mstate;
     ALLEGRO_KEYBOARD_STATE KBstate;
+    ALLEGRO_BITMAP *START;
+    ALLEGRO_BITMAP *STAFF;
+    ALLEGRO_BITMAP *stafflist;
+    ALLEGRO_BITMAP *OPERATION;
+    ALLEGRO_BITMAP *BACKTOHOMEPAGE;
     ALLEGRO_BITMAP *right[2];
     ALLEGRO_BITMAP *left[2];
     ALLEGRO_BITMAP *rightjump;
@@ -47,6 +50,15 @@ typedef struct GAME
     //ALLEGRO_BITMAP *brick = NULL;
     ALLEGRO_BITMAP *brick;
     ALLEGRO_BITMAP *gthorn;
+    ALLEGRO_BITMAP *startpage;
+    ALLEGRO_BITMAP *OPERATIONS;
+    ALLEGRO_BITMAP *NEXTPAGE;
+    ALLEGRO_BITMAP *d1page1;
+    ALLEGRO_BITMAP *d1page2;
+    ALLEGRO_BITMAP *d1page3;
+    ALLEGRO_BITMAP *d2page;
+    ALLEGRO_BITMAP *d3page1;
+    ALLEGRO_BITMAP *d3page2;
     // ALLEGRO_DISPLAY *display = NULL;/* pointer to display */
     ALLEGRO_DISPLAY *display;
 }g;
