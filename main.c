@@ -360,7 +360,7 @@ int main( void )
                 al_clear_to_color(al_map_rgb(0,0,0));
             }
             //game stage2 start loop
-            while(mode2=5)
+            while(mode2==5)
             {
                 //yumin put the game main stage2 here
                 // al_get_keyboard_state(&KBstate);
