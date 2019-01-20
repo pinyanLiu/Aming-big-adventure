@@ -8,9 +8,6 @@ int main( void )
 {
     g GAME;
     m MONSTER,MONSTER2,MONSTER3;
-
-    m MONSTER,MONSTER2;
-    gameStructInit(&GAME,&MONSTER,&MONSTER2);
     int mode=1;//mode=1 game introduction,mode=2 game start window,mode=3 staff,mode=4 operation,mode=5 return 0
     int mode2=0;//the page in mode two
     int run=1;//run=0 game over
