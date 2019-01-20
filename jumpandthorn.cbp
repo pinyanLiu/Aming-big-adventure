@@ -113,6 +113,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="functionlist.h" />
+		<Unit filename="gameStructInit.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="groundThorn.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -130,6 +133,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="monster.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="monsterMove.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="moveAming.c">

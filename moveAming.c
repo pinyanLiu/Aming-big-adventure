@@ -95,18 +95,56 @@ void moveAming(g* gPtr,int a[],int b[])
 {
     int i;
     if(gPtr->block == 0){
-    gPtr->groundHeight = a[gPtr->barD_x/50];}//±±¨î°ª«×¦ì¸m¦bÂà¶b¥¼Âà
+    gPtr->groundHeight = a[gPtr->barD_x/50];}//ï¿½ï¿½ï¿½î°ªï¿½×¦ï¿½mï¿½bï¿½ï¿½bï¿½ï¿½ï¿½ï¿½
     if(gPtr->block == 70){
-        gPtr->groundHeight = a[gPtr->barD_x/50+1];//±±¨î°ª«×¦ì¸m¦bÂà¶b©³³¡
+        gPtr->groundHeight = a[gPtr->barD_x/50+1];//ï¿½ï¿½ï¿½î°ªï¿½×¦ï¿½mï¿½bï¿½ï¿½bï¿½ï¿½ï¿½ï¿½
     }
     if(gPtr->block<70 && gPtr->block>0){
-        gPtr->groundHeight = a[gPtr->barD_x/50+1];//±±¨î°ª«×¦ì¸mÂà¶b¥¼Âà§¹
+        gPtr->groundHeight = a[gPtr->barD_x/50+1];//ï¿½ï¿½ï¿½î°ªï¿½×¦ï¿½mï¿½ï¿½bï¿½ï¿½ï¿½à§¹
     }
+    //display bitmap
+        if (al_key_down(&gPtr->KBstate, ALLEGRO_KEY_LEFT))
+        {
+            gPtr->keydown=1;
+            if(++gPtr->ccount>=gPtr->delay)
+            {
+                if(++gPtr->cur>=2)
+                    gPtr->cur=0;
+                gPtr->ccount=0;
+            }
+        }
+        if(gPtr->keydown==1)
+        al_draw_bitmap( gPtr->left[gPtr->cur], gPtr->barD_x,gPtr->barD_y, 0);
 
+
+        if (al_key_down(&gPtr->KBstate, ALLEGRO_KEY_RIGHT))
+        {
+            gPtr->keydown=2;
+            if(++gPtr->ccount>=gPtr->delay)
+            {
+                if(++gPtr->cur>=2)
+                    gPtr->cur=0;
+                gPtr->ccount=0;
+            }
+        }
+        if(gPtr->keydown==2)
+        al_draw_bitmap( gPtr->right[gPtr->cur], gPtr->barD_x,gPtr->barD_y, 0);
+
+    if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_UP) && gPtr->jump && al_key_down(&gPtr->KBstate, ALLEGRO_KEY_LEFT))
+    {
+        al_draw_bitmap( gPtr->leftjump, gPtr->barD_x,gPtr->barD_y, 0);
+    }
+    if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_UP) && gPtr->jump && al_key_down(&gPtr->KBstate, ALLEGRO_KEY_RIGHT))
+    {
+        al_draw_bitmap( gPtr->rightjump, gPtr->barD_x,gPtr->barD_y, 0);
+    }
     // if (al_key_down(&KBstate, ALLEGRO_KEY_LEFT)) barD_x -= PADDLE_MOVE;
     if (al_key_down(&gPtr->KBstate, ALLEGRO_KEY_LEFT))
+    {
         gPtr->barD_x -= PADDLE_MOVE;
         if(gPtr->barD_y > a[gPtr->barD_x/50+1] )gPtr->barD_x += PADDLE_MOVE;
+
+    }
 
     // if (al_key_down(&KBstate, ALLEGRO_KEY_RIGHT)) barD_x += PADDLE_MOVE;
     if (al_key_down(&gPtr->KBstate, ALLEGRO_KEY_RIGHT))
@@ -144,9 +182,6 @@ void moveAming(g* gPtr,int a[],int b[])
         // barD_y = groundHeight;
         gPtr->barD_y = gPtr->groundHeight;
     }
-
-    // if (al_key_down(&KBstate, ALLEGRO_KEY_SPACE)) barD_x -= PADDLE_MOVE; /*JUMP*/
-
     // if (barD_x < 0)
     if (gPtr->barD_x < 0)
         // barD_x =0; /* make sure the paddles don go off screen */
@@ -157,23 +192,21 @@ void moveAming(g* gPtr,int a[],int b[])
         // barD_x =620; /* make sure the paddles don go off screen */
         gPtr->barD_x =500; /* make sure the paddles don go off screen */
 }
-/*void game(struct GAME* gamePtr)
-{
 
 }*/
 void gameStructInit(g* gPtr,m*mPtr)
 {
     gPtr->x=100;
-    gPtr->y=350;//°_©l°ª«×
+    gPtr->y=350;//ï¿½_ï¿½lï¿½ï¿½ï¿½ï¿½
     gPtr->jump = false;
     gPtr->jumpSpeed = 15;
     gPtr->velX = 0;
     gPtr->velY = 0;
     gPtr->gravity = 0.5;
-    gPtr->groundHeight = 350;//¦a­±°ª«×
+    gPtr->groundHeight = 350;//ï¿½aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     gPtr->brick = NULL;
     gPtr->display = NULL;
-    gPtr->step =0;//¦a¹ÏÅã¥Ü»Ý­n
+    gPtr->step =0;//ï¿½aï¿½ï¿½ï¿½ï¿½Ü»Ý­n
     gPtr->block =0;
     gPtr->life = 3;
     gPtr->pass = 0;
@@ -185,9 +218,9 @@ void gameStructInit(g* gPtr,m*mPtr)
     gPtr->keydown=2;
     gPtr->dead = false;
     mPtr->xo=250;//monster will start move while aming is right here
-    mPtr->yo=350;//¦a­±°ª«×
+    mPtr->yo=350;//ï¿½aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     mPtr->xm=500;//location of monster
-    mPtr->ym=350;//¦a­±°ª«×
+    mPtr->ym=350;//ï¿½aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     mPtr->monster[1] = NULL;
     mPtr->monster[0] = NULL;
     //mvptr[11]->groundhigh =350;

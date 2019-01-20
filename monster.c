@@ -2,24 +2,33 @@
 
 #include "functionlist.h"
 
-int monster(m*mPtr,g* gPtr){
-int i,j;
+void monster(m* mPtr, g* gPtr){
 
 
-for(i=0;i<50;i++){
-        if(gPtr->barD_y==mPtr->yo && gPtr->barD_x==mPtr->xo+i)
-        {j=1;
-         break;}
+        if(gPtr->barD_x>=mPtr->xo)
+       mPtr->monsterMove=1;
+       if(mPtr->monsterMove==1){
+        mPtr->xm--;
+        if(++gPtr->ccount>=gPtr->delay)
+            {
+                if(++gPtr->cur>=2)
+                    gPtr->cur=0;
+                gPtr->ccount=0;
+            }
+        al_draw_bitmap(mPtr->monster[gPtr->cur], mPtr->xm,mPtr->ym,0);
 
-/*while(j==1)
-    {
-        mPtr->xm-=PADDLE_MOVE;
-
-        al_draw_bitmap(mPtr->monster,mPtr->xm,mPtr->ym,0);
-       j=0;
-
-    }*/else j=0;}
- return j;
+       }for(int i=0;i<50;i++){
+    if(gPtr->barD_y==mPtr->ym+i)
+        mPtr->b=1;
+        if(mPtr->b==1){
+    if(gPtr->barD_x==mPtr->xm){
+    gPtr->barD_y=500;
+    deadway(gPtr);
+     }
+     }
 
 }
+
+}
+
 

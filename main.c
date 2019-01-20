@@ -6,7 +6,9 @@
 
 int main( void )
 {
-    int a;//°j°é¥Î
+    int a;//ï¿½jï¿½ï¿½ï¿½
+    g GAME;
+    m MONSTER,MONSTER2,MONSTER3;
     int mode=1;//mode=1 game introduction,mode=2 game start window,mode=3 staff,mode=4 operation,mode=5 return 0
     int mode2=0;//the page in mode two
     int run=1;//run=0 game over
@@ -14,13 +16,11 @@ int main( void )
     int xn=1000,yn=1000;
     int i=0,j=0;//counter
     int q=0,w=0,e=0,r=0;//var
-    g GAME;
-    m MONSTER;
     int array_high[11];
     int array_hit[11];
-    /*mv mapvalue;//©w¸q¦a¹Ï°}¦C
     /* first, set up Allegro and the graphics mode */
     al_init(); /* initialize Allegro */
+    al_install_mouse();
     al_install_keyboard(); /* install the keyboard for Allegro to use */
     al_init_image_addon();
     al_install_mouse();
@@ -28,47 +28,53 @@ int main( void )
 
     //int a;//the var of while
     // Initial game structure
-    gameStructInit(&GAME,&MONSTER);
+    gameStructInit(&GAME,&MONSTER,&MONSTER2,&MONSTER3);
     GAME.pongFont = NULL;
     // display = al_create_display(SCREEN_W, SCREEN_H);
     GAME.display = al_create_display(SCREEN_W, SCREEN_H);
-    // bar1 = al_load_bitmap( "bar1.jpg"); /* load the bar bitmap */
+    //load the bitmap
     GAME.right[0]= al_load_bitmap( "right1.png");
     GAME.right[1]= al_load_bitmap( "right2.png");
     GAME.left[0]= al_load_bitmap( "left1.png");
     GAME.left[1]= al_load_bitmap( "left2.png");
     GAME.rightjump = al_load_bitmap( "rightjump.png");
-    GAME.leftjump = al_load_bitmap( "leftjump.png"); /* load the bar bitmap */
-    // barD_x = SCREEN_H / 2; /* give right paddle its initial X-coordinate */
+    GAME.leftjump = al_load_bitmap( "leftjump.png");
+    GAME.NEXTPAGE = al_load_bitmap( "NEXTPAGE.png");
     GAME.brick = al_load_bitmap( "brick.jpg");
     GAME.gthorn = al_load_bitmap( "gthorn.png");
+    MONSTER.monster[0] = al_load_bitmap( "monster.png");
+    MONSTER.monster[1] = al_load_bitmap( "monster2.png");
+    MONSTER2.monster[0] = al_load_bitmap( "monster.png");
+    MONSTER2.monster[1] = al_load_bitmap( "monster2.png");
+    MONSTER3.rocket = al_load_bitmap( "rocket.png");
+    MONSTER3.superman= al_load_bitmap( "superman.png");
     GAME.background =  al_load_bitmap( "background.jpg");
     GAME.background2=  al_load_bitmap( "background2.jpg");
     GAME.background3=  al_load_bitmap( "background3.jpg");
 
-    GAME.Dead =al_load_bitmap("dead.jpg");//¦º¤`
+    GAME.Dead =al_load_bitmap("dead.jpg");//ï¿½ï¿½ï¿½`
 
-    GAME.question = al_load_bitmap( "question.jpg");//°Ý¸¹
-    GAME.pipeshort = al_load_bitmap( "pipeshort.png");//µu¤ôºÞ
-    GAME.pipelong = al_load_bitmap( "pipelong.png"); ;//ªø¤ôºÞ
-    GAME.cloud = al_load_bitmap("cloud.png");//¶³¦·
-    GAME.cloudthorn = al_load_bitmap("cloudthorn.png") ;//¨ë¶³
-    GAME.grass = al_load_bitmap("grass.png");//¯ó
-    GAME.grassthorn = al_load_bitmap("grassthorn.png");//¨ë¯ó
-    GAME.pill = al_load_bitmap("pill.png");//ÂÅ¦â¤pÃÄ¤Y
-    GAME.pillfake =al_load_bitmap("pillfake.png");//°²ªºÂÅ¦â¤pÃÄ¤Y
-    GAME.rocket = al_load_bitmap("rocket.png");//µµ¦â¤º¿Ç
-    GAME.gaygay = al_load_bitmap("gaygay.png");//¼ï¥É²»
-    GAME.topthorn = al_load_bitmap("topthorn.png");//ÀY³»¨ë
-    GAME.truehere = al_load_bitmap("truehere.png");//¯uªº¦b³o
-    GAME.truethorn = al_load_bitmap("truethorn.png");//¦³¨ëªº¯uªº¦b³o
-    GAME.rocketup = al_load_bitmap("rocketup.png");//¤õ½b±q¤U¤W¨Ó
+    GAME.question = al_load_bitmap( "question.jpg");//ï¿½Ý¸ï¿½
+    GAME.pipeshort = al_load_bitmap( "pipeshort.png");//ï¿½uï¿½ï¿½ï¿½
+    GAME.pipelong = al_load_bitmap( "pipelong.png"); ;//ï¿½ï¿½ï¿½ï¿½ï¿½
+    GAME.cloud = al_load_bitmap("cloud.png");//ï¿½ï¿½ï¿½ï¿½
+    GAME.cloudthorn = al_load_bitmap("cloudthorn.png") ;//ï¿½ë¶³
+    GAME.grass = al_load_bitmap("grass.png");//ï¿½ï¿½
+    GAME.grassthorn = al_load_bitmap("grassthorn.png");//ï¿½ï¿½ï¿½
+    GAME.pill = al_load_bitmap("pill.png");//ï¿½Å¦ï¿½pï¿½Ä¤Y
+    GAME.pillfake =al_load_bitmap("pillfake.png");//ï¿½ï¿½ï¿½ï¿½ï¿½Å¦ï¿½pï¿½Ä¤Y
+    GAME.rocket = al_load_bitmap("rocket.png");//ï¿½ï¿½ï¿½â¤ºï¿½ï¿½
+    GAME.gaygay = al_load_bitmap("gaygay.png");//ï¿½ï¿½É²ï¿½
+    GAME.topthorn = al_load_bitmap("topthorn.png");//ï¿½Yï¿½ï¿½ï¿½ï¿½
+    GAME.truehere = al_load_bitmap("truehere.png");//ï¿½uï¿½ï¿½ï¿½bï¿½o
+    GAME.truethorn = al_load_bitmap("truethorn.png");//ï¿½ï¿½ï¿½ëªºï¿½uï¿½ï¿½ï¿½bï¿½o
+    GAME.rocketup = al_load_bitmap("rocketup.png");//ï¿½ï¿½ï¿½bï¿½qï¿½Uï¿½Wï¿½ï¿½
     GAME.nonthink = al_load_bitmap("nonthink.png");//
-    GAME.trustyourself = al_load_bitmap("trustyourself.png");//¬Û«H¦Û¤v
-    GAME.groundthorn = al_load_bitmap("groundthorn.png");//¦a¨ë
+    GAME.trustyourself = al_load_bitmap("trustyourself.png");//ï¿½Û«Hï¿½Û¤v
+    GAME.groundthorn = al_load_bitmap("groundthorn.png");//ï¿½aï¿½ï¿½
     GAME.h = al_load_bitmap("h.png");
-    GAME.flag = al_load_bitmap("flag.png");//Àx¦sÂI*/
-    GAME.Empty = al_load_bitmap("empty.png");//¬Ý¤£¨£ªº¿j¶ô
+    GAME.flag = al_load_bitmap("flag.png");//ï¿½xï¿½sï¿½I*/
+    GAME.Empty = al_load_bitmap("empty.png");//ï¿½Ý¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½jï¿½ï¿½
 
     GAME.startpage = al_load_bitmap( "startpage.png");
     GAME.d1page1 = al_load_bitmap( "d1page1.png");
@@ -325,7 +331,7 @@ int main( void )
             if (al_key_down(&GAME.KBstate, ALLEGRO_KEY_ESCAPE))
                 break;
             // moveAming(); /* move the paddles */
-            al_draw_bitmap(GAME.background,0,0,0);//­I´º
+            al_draw_bitmap(GAME.background,0,0,0);//ï¿½Iï¿½ï¿½
 
             int*map = (int*) malloc(sizeof(int)*68);
             if(GAME.mapcontral == 1)
@@ -333,14 +339,14 @@ int main( void )
                 for(a = 0;a<11;a++){
                     map[a] = map_array[a+GAME.block];
             }
-            al_draw_bitmap(GAME.background,0,0,0);//­I´º
-            }//Åª¨ú¦a¹Ï1
+            al_draw_bitmap(GAME.background,0,0,0);//ï¿½Iï¿½ï¿½
+            }//Åªï¿½ï¿½ï¿½aï¿½ï¿½1
             for(a=0;a<11;a++){
                 map_display(map[a],a,&GAME,&MONSTER);
-            }//Åã¥Ü¦a¹Ï
+            }//ï¿½ï¿½Ü¦aï¿½ï¿½
             for(a = 0;a<11;a++){
             array_high[a] = groundhigh(map[a],&GAME);
-            }//¬ö¿ý°ª«×
+            }//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             moveAming(&GAME,array_high,map);
             map_move(&GAME);
             /*for(i = 0;i<11;i++){
@@ -350,25 +356,25 @@ int main( void )
             if(GAME.dead == true ){
                 break;
             }
-            //¦º¤`§P©w
+            //ï¿½ï¿½ï¿½`ï¿½Pï¿½w
             for(a = 0;a<11;a++){
             if(map[a] == 21){
             GAME.pass = pass(&GAME,a);}
             if(GAME.pass == 1)break;
-            }//¹LÃö§PÂ_
+            }//ï¿½Lï¿½ï¿½ï¿½Pï¿½_
             peopledisplay(&GAME);
             //al_draw_bitmap( GAME.left[], GAME.barD_x,GAME.barD_y, 0);
             al_rest(0.01);
-            al_draw_textf( GAME.pongFont, al_map_rgb(0, 0, 0), 50, 50, -1, "life : %d", GAME.life);//Åã¥Ü¥Í©R¼Æ
+            al_draw_textf( GAME.pongFont, al_map_rgb(0, 0, 0), 50, 50, -1, "life : %d", GAME.life);//ï¿½ï¿½Ü¥Í©Rï¿½ï¿½
             /* display */
             al_flip_display(); /* Wait for the beginning of a vertical retrace. */
             al_clear_to_color(al_map_rgb(0,0,0));
             if(GAME.pass != 0){
                 GAME.mapcontral++;
                 break;
-            }//´«Ãö
+            }//ï¿½ï¿½ï¿½ï¿½
         /* Clear the complete target bitmap, but confined by the clipping rectangle. */
-            }//¹CÀ¸¤º¨M©w¥Í¦º
+            }//ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Mï¿½wï¿½Í¦ï¿½
             al_get_keyboard_state(&GAME.KBstate);
         // if (al_key_down(&KBstate, ALLEGRO_KEY_ESCAPE))
             if (al_key_down(&GAME.KBstate, ALLEGRO_KEY_ESCAPE))
@@ -378,7 +384,7 @@ int main( void )
             al_rest(1);
             if (GAME.mapcontral == 2) mode2=4; break;
             if(GAME.life == 0){mode = 5;}
-            }//¤@½ü¹CÀ¸ªº¥Í¦º
+            }//ï¿½@ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Í¦ï¿½
             if(GAME.life == 0){mode = 1;break;}
         }       /* Clear the complete target bitmap, but confined by the clipping rectangle. */
 
@@ -444,24 +450,24 @@ int main( void )
                     if (al_key_down(&GAME.KBstate, ALLEGRO_KEY_ESCAPE))
                     break;
                     // moveAming(); /* move the paddles */
-                    al_draw_bitmap(GAME.background2,0,0,0);//­I´º
+                    al_draw_bitmap(GAME.background2,0,0,0);//ï¿½Iï¿½ï¿½
                     int*map = (int*) malloc(sizeof(int)*68);
                     if(GAME.mapcontral == 2)
                     {
                     for(a = 0;a<11;a++){
                     map[a] = map_array2[a+GAME.block];
                     }
-                    al_draw_bitmap(GAME.background,0,0,0);//­I´º
-                    }//Åª¨ú¦a¹Ï2
+                    al_draw_bitmap(GAME.background,0,0,0);//ï¿½Iï¿½ï¿½
+                    }//Åªï¿½ï¿½ï¿½aï¿½ï¿½2
 
                     for(a=0;a<11;a++){
                     map_display(map[a],a,&GAME,&MONSTER);
-                    }//Åã¥Ü¦a¹Ï
+                    }//ï¿½ï¿½Ü¦aï¿½ï¿½
 
 
                     for(a = 0;a<11;a++){
                     array_high[a] = groundhigh(map[a],&GAME);
-                    }//¬ö¿ý°ª«×
+                    }//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     moveAming(&GAME,array_high,map);
                     map_move(&GAME);
                     /*for(i = 0;i<11;i++){
@@ -471,16 +477,16 @@ int main( void )
                     if(GAME.dead == true ){
                     break;
                     }
-                    //¦º¤`§P©w
+                    //ï¿½ï¿½ï¿½`ï¿½Pï¿½w
                     for(a = 0;a<11;a++){
                     if(map[a] == 21){
                     GAME.pass = pass(&GAME,a);}
                     if(GAME.pass == 1)break;
-                    }//¹LÃö§PÂ_
+                    }//ï¿½Lï¿½ï¿½ï¿½Pï¿½_
                     peopledisplay(&GAME);
                     //al_draw_bitmap( GAME.left[], GAME.barD_x,GAME.barD_y, 0);
                     al_rest(0.01);
-                    al_draw_textf( GAME.pongFont, al_map_rgb(0, 0, 0), 50, 50, -1, "life : %d", GAME.life);//Åã¥Ü¥Í©R¼Æ
+                    al_draw_textf( GAME.pongFont, al_map_rgb(0, 0, 0), 50, 50, -1, "life : %d", GAME.life);//ï¿½ï¿½Ü¥Í©Rï¿½ï¿½
                     /* display */
 
                     al_flip_display(); /* Wait for the beginning of a vertical retrace. */
@@ -488,9 +494,9 @@ int main( void )
                     if(GAME.pass != 0){
                     GAME.mapcontral++;
                     break;
-                    }//´«Ãö
+                    }//ï¿½ï¿½ï¿½ï¿½
                     /* Clear the complete target bitmap, but confined by the clipping rectangle. */
-                    }//¹CÀ¸¤º¨M©w¥Í¦º
+                    }//ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Mï¿½wï¿½Í¦ï¿½
                     al_get_keyboard_state(&GAME.KBstate);
                     // if (al_key_down(&KBstate, ALLEGRO_KEY_ESCAPE))
                     if (al_key_down(&GAME.KBstate, ALLEGRO_KEY_ESCAPE))
@@ -501,7 +507,7 @@ int main( void )
                     if(GAME.mapcontral == 3){ mode2 = 6;
                     break;}
                     if(GAME.life == 0){mode = 5;}
-                    }//¤@½ü¹CÀ¸ªº¥Í¦º
+                    }//ï¿½@ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Í¦ï¿½
                 if(GAME.life == 0){mode = 1;
                         break;}
                 }       /* Clear the complete target bitmap, but confined by the clipping rectangle. */
@@ -617,24 +623,24 @@ int main( void )
         if (al_key_down(&GAME.KBstate, ALLEGRO_KEY_ESCAPE))
             break;
         // moveAming(); /* move the paddles
-        al_draw_bitmap(GAME.background,0,0,0);//­I´º
+        al_draw_bitmap(GAME.background,0,0,0);//ï¿½Iï¿½ï¿½
         int*map = (int*) malloc(sizeof(int)*68);
         if(GAME.mapcontral == 3)
         {
             for(a = 0;a<11;a++){
                 map[a] = map_array3[a+GAME.block];
             }
-        al_draw_bitmap(GAME.background3,0,0,0);//­I´º
-        }//Åª¨ú¦a¹Ï3
+        al_draw_bitmap(GAME.background3,0,0,0);//ï¿½Iï¿½ï¿½
+        }//Åªï¿½ï¿½ï¿½aï¿½ï¿½3
 
         for(a=0;a<11;a++){
             map_display(map[a],a,&GAME,&MONSTER);
-        }//Åã¥Ü¦a¹Ï
+        }//ï¿½ï¿½Ü¦aï¿½ï¿½
 
 
         for(a = 0;a<11;a++){
             array_high[a] = groundhigh(map[a],&GAME);
-        }//¬ö¿ý°ª«×
+        }//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         moveAming(&GAME,array_high,map);
         map_move(&GAME);
         /*for(i = 0;i<11;i++){
@@ -644,25 +650,25 @@ int main( void )
          if(GAME.dead == true ){
             break;
          }
-        //¦º¤`§P©w
+        //ï¿½ï¿½ï¿½`ï¿½Pï¿½w
         for(a = 0;a<11;a++){
         if(map[a] == 21){
         GAME.pass = pass(&GAME,a);}
         if(GAME.pass == 1)break;
-        }//¹LÃö§PÂ_
+        }//ï¿½Lï¿½ï¿½ï¿½Pï¿½_
         peopledisplay(&GAME);
        //al_draw_bitmap( GAME.left[], GAME.barD_x,GAME.barD_y, 0);
        al_rest(0.01);
-        al_draw_textf( GAME.pongFont, al_map_rgb(0, 0, 0), 50, 50, -1, "life : %d", GAME.life);//Åã¥Ü¥Í©R¼Æ
+        al_draw_textf( GAME.pongFont, al_map_rgb(0, 0, 0), 50, 50, -1, "life : %d", GAME.life);//ï¿½ï¿½Ü¥Í©Rï¿½ï¿½
         // display
         al_flip_display(); /* Wait for the beginning of a vertical retrace. */
         al_clear_to_color(al_map_rgb(0,0,0));
         if(GAME.pass != 0){
             GAME.mapcontral++;
             break;
-        }//´«Ãö
+        }//ï¿½ï¿½ï¿½ï¿½
          //Clear the complete target bitmap, but confined by the clipping rectangle.
-        }//¹CÀ¸¤º¨M©w¥Í¦º
+        }//ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Mï¿½wï¿½Í¦ï¿½
         al_get_keyboard_state(&GAME.KBstate);
         // if (al_key_down(&KBstate, ALLEGRO_KEY_ESCAPE))
         if (al_key_down(&GAME.KBstate, ALLEGRO_KEY_ESCAPE))
@@ -841,3 +847,43 @@ int main( void )
     al_destroy_bitmap( GAME.NEXTPAGE);
     return 0;
 }
+
+
+
+    while(mode==5)
+    {
+        al_destroy_bitmap( GAME.startpage);
+        al_destroy_bitmap( GAME.d1page1);
+        al_destroy_bitmap( GAME.d1page2);
+        al_destroy_bitmap( GAME.d1page3);
+        al_destroy_bitmap( GAME.d2page);
+        al_destroy_bitmap( GAME.d3page1);
+        al_destroy_bitmap( GAME.d3page2);
+        al_destroy_bitmap( GAME.START);
+        al_destroy_bitmap( GAME.OPERATION);
+        al_destroy_bitmap( GAME.NEXTPAGE);
+        al_destroy_bitmap( GAME.STAFF);
+        al_destroy_bitmap( GAME.BACKTOHOMEPAGE);
+        for (int i=0; i<2; i++)
+            al_destroy_bitmap( GAME.right[i]);
+        for (int i=0; i<2; i++)
+            al_destroy_bitmap( GAME.left[i]);
+        // al_destroy_display();
+        al_destroy_bitmap( GAME.rightjump);
+        al_destroy_bitmap( GAME.leftjump);
+        // al_destroy_display( display); /* destroy the display */
+        al_destroy_bitmap( GAME.brick);
+        al_destroy_bitmap( GAME.gthorn);
+        al_destroy_bitmap( GAME.gthorn);
+        al_destroy_bitmap( GAME.OPERATIONS);
+        al_destroy_bitmap( GAME.NEXTPAGE);
+        al_destroy_display( GAME.display);/* destroy the display */
+        for (int i=0; i<2; i++)
+            al_destroy_bitmap( MONSTER.monster[i]);
+        for (int i=0; i<2; i++)
+            al_destroy_bitmap( MONSTER2.monster[i]);
+
+        return 0;
+    }
+}
+}/* end function main */

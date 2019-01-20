@@ -18,12 +18,12 @@ typedef struct GAME
 {
     int barD_x;
     int barD_y;
-    int x;
-    int y;
     int cur;
     int ccount;
     int delay;
     int keydown;//judge if key down
+    int x,xi;
+    int y,yi;
     //int x=100,y=440;
     // bool jump = false;
     bool jump;
@@ -44,20 +44,17 @@ typedef struct GAME
     int life;//生命值量
     int pass;//是否通關
     int mapcontral;//選擇地圖
-    int dead;
-    ALLEGRO_EVENT alEvent;
     ALLEGRO_EVENT_QUEUE* alEventQueue;
     ALLEGRO_FONT *pongFont ;
 
     ALLEGRO_MOUSE_STATE MSstate;
+    ALLEGRO_EVENT alEvent;
+    bool dead;
     ALLEGRO_KEYBOARD_STATE KBstate;
     ALLEGRO_BITMAP *right[2];
     ALLEGRO_BITMAP *left[2];
     ALLEGRO_BITMAP *rightjump;
     ALLEGRO_BITMAP *leftjump;
-    // ALLEGRO_BITMAP *bar1 = NULL; /* pointer to the bar's image bitmap */
-
-
     //ALLEGRO_BITMAP *brick = NULL;
     ALLEGRO_BITMAP *brick;
     ALLEGRO_BITMAP *gthorn;
@@ -108,13 +105,12 @@ typedef struct GAME
     ALLEGRO_DISPLAY *display;
 }g;
 
-typedef struct MONSTER
+typedef struct
 {
 ALLEGRO_BITMAP *monster[2];
 ALLEGRO_BITMAP *superman;
 ALLEGRO_BITMAP *rocket;
-int barD_x;
-int barD_y;
+
 int xo; //ming at the position-xo monster start walking
 int yo;
 int xm;//monster position
