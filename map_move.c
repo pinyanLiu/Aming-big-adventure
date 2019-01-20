@@ -19,12 +19,12 @@ void map_move(g* gPtr){
          }
         if(gPtr->barD_x >= 300 &&gPtr->block != gPtr->stopblock)
             {
-            gPtr->step=gPtr->step+2.5;
+            gPtr->step=gPtr->step+3;
             gPtr->barD_x =gPtr->barD_x -1;
             }
         if(gPtr->barD_x <= 200 && gPtr->block != 0)
             {
-            gPtr->step=gPtr->step-2.5;
+            gPtr->step=gPtr->step-3;
            gPtr->barD_x =gPtr->barD_x +1;
             }
         if(gPtr->step > 50  )

@@ -4,7 +4,7 @@
 #include "header.h"
 
 void gameStructInit(g* gPtr,m*mPtr);
-void moveAming(g* gPtr,int a[]);
+void moveAming(g* gPtr,int a[],int b[]);
 void groundthorn(g* gPtr,int,int);
 void invisibleblock(g* gPtr);
 int monster(m*mPtr,g* gPtr);
@@ -22,4 +22,5 @@ void peopledisplay(g*gPtr);
 void monsterVertical(m* mPtr,g* gPtr);
 
 void peopledisplay(g*gPtr);
+void hitbrick(g*gPtr,int a,int i);
 #endif

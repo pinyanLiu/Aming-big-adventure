@@ -6,6 +6,8 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
+#include <allegro5/allegro_ttf.h>
+#include <allegro5/allegro_font.h>
 
 /* symbolic constants for the ball¡¦s possible directions */
 #define PADDLE_MOVE 3
@@ -45,7 +47,9 @@ typedef struct GAME
     int dead;
     ALLEGRO_EVENT alEvent;
     ALLEGRO_EVENT_QUEUE* alEventQueue;
-    ALLEGRO_MOUSE_STATE Mstate;
+    ALLEGRO_FONT *pongFont ;
+
+    ALLEGRO_MOUSE_STATE MSstate;
     ALLEGRO_KEYBOARD_STATE KBstate;
     ALLEGRO_BITMAP *right[2];
     ALLEGRO_BITMAP *left[2];
@@ -80,7 +84,24 @@ typedef struct GAME
     ALLEGRO_BITMAP* flag  ;//儲存點*/
     ALLEGRO_BITMAP* Empty  ;
 
-     ALLEGRO_BITMAP* background  ;
+    ALLEGRO_BITMAP *START;
+    ALLEGRO_BITMAP *STAFF;
+    ALLEGRO_BITMAP *stafflist;
+    ALLEGRO_BITMAP *OPERATION;
+    ALLEGRO_BITMAP *BACKTOHOMEPAGE;
+    ALLEGRO_BITMAP *startpage;
+    ALLEGRO_BITMAP *OPERATIONS;
+    ALLEGRO_BITMAP *NEXTPAGE;
+    ALLEGRO_BITMAP *d1page1;
+    ALLEGRO_BITMAP *d1page2;
+    ALLEGRO_BITMAP *d1page3;
+    ALLEGRO_BITMAP *d2page;
+    ALLEGRO_BITMAP *d3page1;
+    ALLEGRO_BITMAP *d3page2;//遊戲畫面
+
+    ALLEGRO_BITMAP *Dead;
+
+    ALLEGRO_BITMAP* background  ;
     ALLEGRO_BITMAP* background2  ;//2和3換關的時候才會用到
     ALLEGRO_BITMAP* background3  ;//場景
     // ALLEGRO_DISPLAY *display = NULL;/* pointer to display */

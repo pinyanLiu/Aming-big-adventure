@@ -13,21 +13,21 @@ int groundhigh(int a,g* gPtr)
  if(a == 4){if(gPtr->barD_y <=50)return 50;
             else if(gPtr->barD_y <= 200)return 200;
             else return 350;}
- if(a == 5){return 200;}
- if(a == 6){return 150;}
+ if(a == 5){return 250;}
+ if(a == 6){return 200;}
  if(a == 7){return 350;}
  if(a == 8){return 350;}
  if(a == 9){if(gPtr->barD_y <=200)return 200;else return 350;}
  if(a == 10){return 350;}
  if(a == 11){return 350;}
- if(a == 12){return 200;}
+ if(a == 12){return 250;}
  if(a == 13){return 350;}
  if(a == 14){return 350;}
- if(a == 15){return 200;}
- if(a == 16){return 150;}
+ if(a == 15){return 250;}
+ if(a == 16){return 200;}
  if(a == 17){if(gPtr->barD_y <=200)return 200;else return 350;}
  if(a == 18){if(gPtr->barD_y <=200)return 200;else return 350;}
- if(a == 19){if(gPtr->barD_y<=100)return 100;else return 350;}
+ if(a == 19){if(gPtr->barD_y<=200)return 200;else return 350;}
  if(a == 20){return 350;}
  if(a == 21){return 350;}
  if(a == 22){return 350;}
@@ -37,7 +37,7 @@ int groundhigh(int a,g* gPtr)
  if(a == 26){if(gPtr->barD_y <= 250)return 250;else return 500;}
  if(a == 27){return 300;}
  if(a == 28){if(gPtr->barD_y <=100)return 100; else return 300;}
- if(a == 29){if(gPtr->barD_y <=100)return 100; else return 300;}
+ if(a == 29){ return 300;}
  if(a == 30){return 100;}
  if(a == 31){if(gPtr->barD_y<=150)return 150;else return 350;}
  if(a == 32){return 350;}
@@ -61,14 +61,15 @@ int groundhigh(int a,g* gPtr)
  if(a == 49){ return 350;}
  if(a == 50){ return 350;}
  if(a == 51){ return 350;}
- if(a == 52){if(gPtr->barD_y<=100)return 100;else return 350;}
+ if(a == 52){if(gPtr->barD_y<=200)return 200;else return 350;}
  if(a == 53){return 0;}
  }
 
- /*void hitbrick(g*gPtr,a){
- if(a == 2){if(gPtr->barD_y > 300){return 200;}
-             return 350;}
- if(a == 3){if(gPtr->barD_y >300)return 200;
+ /*void hitbrick(g*gPtr,int a,int i){
+ if(a == 2){if(gPtr->barD_x == 50*i-gPtr->step)
+        if(gPtr->barD_y > 300 && gPtr->barD_y < 302){ gPtr->jump  = true;}
+             }
+ /*if(a == 3){if(gPtr->barD_y >300)return 200;
              return 350;}
  if(a == 4){if(gPtr->barD_y <=50)return 50;
             else if(gPtr->barD_y <= 200)return 200;
@@ -88,10 +89,11 @@ int groundhigh(int a,g* gPtr)
  if(a == 43){if(gPtr->barD_y<=200)return 200;else return 350;}
  if(a == 44){if(gPtr->barD_y<=100)return 100;else return 350;}
  if(a == 46){if(gPtr->barD_y<=100)return 100;else return 350;}
-            }*/
+}*/
 
-void moveAming(g* gPtr,int a[])
+void moveAming(g* gPtr,int a[],int b[])
 {
+    int i;
     if(gPtr->block == 0){
     gPtr->groundHeight = a[gPtr->barD_x/50];}//控制高度位置在轉軸未轉
     if(gPtr->block == 70){
@@ -111,13 +113,14 @@ void moveAming(g* gPtr,int a[])
          gPtr->barD_x += PADDLE_MOVE;
         if(gPtr->barD_y > a[gPtr->barD_x/50+1])gPtr->barD_x -= PADDLE_MOVE;
     // if(al_key_down(&KBstate, ALLEGRO_KEY_J) && jump)
-    if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_J) && gPtr->jump)//JUMP 104
+    if(al_key_down(&gPtr->KBstate, ALLEGRO_KEY_UP) && gPtr->jump)//JUMP 104
     {
         // velY = -jumpSpeed;
         gPtr->velY = -gPtr->jumpSpeed;
         // jump = false;
         gPtr->jump = false;
     }
+
 
     // if(!jump)
     if(!gPtr->jump)//jump
@@ -166,7 +169,7 @@ void gameStructInit(g* gPtr,m*mPtr)
     gPtr->jumpSpeed = 15;
     gPtr->velX = 0;
     gPtr->velY = 0;
-    gPtr->gravity = 0.4;
+    gPtr->gravity = 0.5;
     gPtr->groundHeight = 350;//地面高度
     gPtr->brick = NULL;
     gPtr->display = NULL;
