@@ -1,17 +1,16 @@
-/*#include <stdio.h>
-#include <stdlib.h>
+/*#include <stdlib.h>
 
 #include "functionlist.h"
 
 
-void invisibleblock(g* gPtr)
+void invisibleblock(g* gPtr,int xb,int yb)
 {
     int i;
     for(i=0;i<50;i++){
-        if (gPtr->barD_y==gPtr->y && gPtr->barD_x==gPtr->x+i)
-
-        printf("***");
-
+        if (gPtr->barD_y==yb&& gPtr->barD_x==xb+i)
+        {
+        al_draw_bitmap(gPtr->brick,xb,yb-30,0);
+        }
 
 }
 

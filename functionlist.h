@@ -6,7 +6,8 @@
 void gameStructInit(g* gPtr,m*mPtr,m* m2Ptr,m* m3Ptr);
 void moveAming(g* gPtr);
 void groundthorn(g* gPtr,int,int);
-void invisibleblock(g* gPtr);
+void invisibleblock(g* gPtr,int,int);
 void monster(m* mPtr,g* gPtr);
 void monsterVertical(m* mPtr,g* gPtr);
+void deadway(g* gPtr);
 #endif

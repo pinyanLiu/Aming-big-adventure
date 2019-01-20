@@ -22,9 +22,10 @@ void monsterVertical(m* mPtr, g* gPtr){
     if(gPtr->barD_x==mPtr->xm+i)
         mPtr->c=1;
         if(mPtr->c==1){
-    if(gPtr->barD_y==mPtr->ym-i)
-     printf("you are dead");
-     }
+    if(gPtr->barD_y==mPtr->ym-i){
+    gPtr->barD_y=500;
+    deadway(gPtr);
+     }}
 }
 }
 

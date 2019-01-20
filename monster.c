@@ -21,8 +21,10 @@ void monster(m* mPtr, g* gPtr){
     if(gPtr->barD_y==mPtr->ym+i)
         mPtr->b=1;
         if(mPtr->b==1){
-    if(gPtr->barD_x==mPtr->xm)
-     printf("zzz");
+    if(gPtr->barD_x==mPtr->xm){
+    gPtr->barD_y=500;
+    deadway(gPtr);
+     }
      }
 
 }
