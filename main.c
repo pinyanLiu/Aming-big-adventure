@@ -299,6 +299,8 @@ int main( void )
                 //monster
                 monster(&MONSTER,&GAME);
                 monster(&MONSTER2,&GAME);
+                //monsterVertical
+                monsterVertical(&MONSTER3,&GAME);
                 //groundthorn
                 groundthorn(&GAME,100,440);
                 groundthorn(&GAME,200,440);
