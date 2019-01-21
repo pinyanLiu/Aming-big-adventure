@@ -23,8 +23,13 @@ int main( void )
     al_init(); /* initialize Allegro */
     al_install_keyboard(); /* install the keyboard for Allegro to use */
     al_init_image_addon();
+    al_install_audio();  // install sound driver
+    al_init_acodec_addon();
+    al_reserve_samples(9);
     al_install_mouse();
     al_init_ttf_addon();
+
+
 
     //int a;//the var of while
     // Initial game structure
@@ -96,10 +101,29 @@ int main( void )
     GAME.pongFont = al_load_ttf_font("ARCHRISTY.ttf", 20, 0); /* load the FONT file */
 
     GAME.barD_x = 0; /* give right paddle its initial X-coordinate */
-    int map_array[68] = {1,1,1,1,8,52,13,10,10,2,19,4,3,2,1,1,1,5,5,7,1,0,0,0,1,1,12,1,13,8,8,1,6,6,1,1,1,1,1,6,16,1,0,0,0,1,46,5,15,1,1,1,17,17,18,17,1,1,1,1,1,1,20,1,1,1,21};
-    int map_array2[68] ={1,1,23,23,22,22,23,23,0,0,7,1,1,1,0,0,0,1,7,1,1,48,46,2,0,0,26,27,28,28,29,29,28,40,30,30,1,31,1,1,1,1,48,48,48,1,1,32,1,1,1,21};
+    int map_array[68] = {1,1,1,1,8,52,13,10,10,2,19,4,3,2,1,1,1,5,5,7,7,0,0,0,1,1,12,1,13,8,8,1,6,6,1,1,1,1,1,6,6,1,0,0,0,1,46,5,15,1,1,1,17,17,18,17,1,1,1,1,1,1,20,1,1,1,21};
+    int map_array2[68] ={1,1,23,23,22,22,23,23,0,0,7,7,1,1,0,0,0,7,8,1,1,48,46,2,0,0,26,27,28,28,29,29,54,40,30,30,1,31,1,1,1,1,48,48,48,1,1,32,1,1,1,21};
     int map_array3[80] = {49,50,50,50,50,50,50,50,50,50,53,1,1,1,1,1,34,34,35,50,34,34,34,34,34,0,34,34,34,34,34,34,36,51,0,0,37,0,0,37,43,0,0,39,0,0,34,34,34,34,41,41,42,41,34,34,34,34,34,44,50,50,34,34,34,34,0,21};
+
+    GAME.die1 = al_load_sample("die1.wav");
+    GAME.die2 = al_load_sample("die2.wav");
+    GAME.die3 = al_load_sample("die3.wav");
+    GAME.die4 = al_load_sample("die4.wav");
+    GAME.die5 = al_load_sample("die5.wav");
+    GAME.die6 = al_load_sample("die6.wav");
+    GAME.die7 = al_load_sample("die7.wav");
+    GAME.die8 = al_load_sample("die8.wav");
+    GAME.die9 = al_load_sample("die9.wav");
+    GAME.die10 = al_load_sample("die10.wav");
+    GAME.die11 = al_load_sample("die11.wav");
+    GAME.die12= al_load_sample("die12.wav");
+    GAME.die13 = al_load_sample("die13.wav");
+    GAME.die14 = al_load_sample("die14.wav");
+    GAME.die15 = al_load_sample("die15.wav");
+    GAME.backgroundmusic = al_load_sample("background.wav");
+    al_play_sample(GAME.backgroundmusic, 0.8, 0, 1, ALLEGRO_PLAYMODE_LOOP, NULL);
     while(run){
+
         al_get_keyboard_state(&GAME.KBstate);
         // if (al_key_down(&KBstate, ALLEGRO_KEY_ESCAPE))
         if (al_key_down(&GAME.KBstate, ALLEGRO_KEY_ESCAPE))
@@ -346,6 +370,7 @@ int main( void )
             }//紀錄高度
             moveAming(&GAME,array_high,map);
             map_move(&GAME);
+            monster(&MONSTER,&GAME,map);
             /*for(i = 0;i<11;i++){
             hitbrick(&GAME,map[i],i);
             }*/
@@ -379,7 +404,7 @@ int main( void )
         // if (al_key_down(&KBstate, ALLEGRO_KEY_ESCAPE))
             if (al_key_down(&GAME.KBstate, ALLEGRO_KEY_ESCAPE))
                 break;
-            if(GAME.dead == true){savepoint(&GAME);}
+            if(GAME.dead == true){savepoint(&GAME,&MONSTER);}
             if(GAME.pass != 0){choosemap(&GAME);}
             al_rest(1);
             if (GAME.mapcontral == 2) mode2=4; break;
@@ -470,6 +495,7 @@ int main( void )
                     }//紀錄高度
                     moveAming(&GAME,array_high,map);
                     map_move(&GAME);
+                    monster(&MONSTER,&GAME,map);
                     /*for(i = 0;i<11;i++){
                     hitbrick(&GAME,map[i],i);
                     }*/
@@ -503,7 +529,7 @@ int main( void )
                     // if (al_key_down(&KBstate, ALLEGRO_KEY_ESCAPE))
                     if (al_key_down(&GAME.KBstate, ALLEGRO_KEY_ESCAPE))
                     break;
-                    if(GAME.dead == true){savepoint(&GAME);}
+                    if(GAME.dead == true){savepoint(&GAME,&MONSTER);}
                     if(GAME.pass != 0){choosemap(&GAME);}
                     al_rest(1);
                     if(GAME.mapcontral == 3){ mode2 = 6;
@@ -657,6 +683,7 @@ int main( void )
         }//過關判斷
         peopledisplay(&GAME);
        deadway(&GAME,&MONSTER,map);
+       monster(&MONSTER,&GAME,map);
        //al_draw_bitmap( GAME.left[], GAME.barD_x,GAME.barD_y, 0);
        al_rest(0.01);
         al_draw_textf( GAME.pongFont, al_map_rgb(0, 0, 0), 50, 50, -1, "life : %d", GAME.life);//顯示生命數
@@ -676,7 +703,7 @@ int main( void )
         // if (al_key_down(&KBstate, ALLEGRO_KEY_ESCAPE))
         if (al_key_down(&GAME.KBstate, ALLEGRO_KEY_ESCAPE))
             break;
-        if(GAME.dead == true){savepoint(&GAME);}
+        if(GAME.dead == true){savepoint(&GAME,&MONSTER);}
         if(GAME.mapcontral == 4){mode2 = 9;break;}
         if(GAME.life == 0){break;}
         al_rest(1);

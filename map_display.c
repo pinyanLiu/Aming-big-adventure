@@ -300,5 +300,12 @@ void map_display(int a,int i,g* gPtr,m* mPtr){
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,150,0);
                         al_draw_bitmap(gPtr->brick,50*i-gPtr->step,100,0);
                 }
+                if(a == 54){
+                        al_draw_bitmap(gPtr->brick,50*i-gPtr->step,450,0);
+                        al_draw_bitmap(gPtr->brick,50*i-gPtr->step,400,0);
+                        al_draw_bitmap(gPtr->brick,50*i-gPtr->step,350,0);
+
+
+                }
 
 }

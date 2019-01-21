@@ -63,12 +63,13 @@ int groundhigh(int a,g* gPtr)
  if(a == 51){ return 350;}
  if(a == 52){if(gPtr->barD_y<=200)return 200;else return 350;}
  if(a == 53){return 0;}
+ if(a == 54){return 300;}
  }
 
 
 void moveAming(g* gPtr,int a[],int b[])
 {
-    int i;
+
     if(gPtr->block == 0){
     gPtr->groundHeight = a[gPtr->barD_x/50];}//控制高度位置在轉軸未轉
     if(gPtr->block == 70){
@@ -146,6 +147,7 @@ void gameStructInit(g* gPtr,m*mPtr)
     gPtr->velY = 0;
     gPtr->gravity = 0.5;
     gPtr->groundHeight = 350;//地面高度
+    gPtr->die1 = NULL;
     gPtr->brick = NULL;
     gPtr->display = NULL;
     gPtr->step =0;//地圖顯示需要

@@ -45,6 +45,24 @@ typedef struct GAME
     int pass;//是否通關
     int mapcontral;//選擇地圖
     int dead;
+    ALLEGRO_SAMPLE *die1;
+    ALLEGRO_SAMPLE *die2;
+    ALLEGRO_SAMPLE *die3;
+    ALLEGRO_SAMPLE *die4;
+    ALLEGRO_SAMPLE *die5;
+    ALLEGRO_SAMPLE *die6;
+    ALLEGRO_SAMPLE *die7;
+    ALLEGRO_SAMPLE *die8;
+    ALLEGRO_SAMPLE *die9;
+    ALLEGRO_SAMPLE *die10;
+    ALLEGRO_SAMPLE *die11;
+    ALLEGRO_SAMPLE *die12;
+    ALLEGRO_SAMPLE *die13;
+    ALLEGRO_SAMPLE *die14;
+    ALLEGRO_SAMPLE *die15;
+    ALLEGRO_SAMPLE *backgroundmusic;
+
+
     ALLEGRO_EVENT alEvent;
     ALLEGRO_EVENT_QUEUE* alEventQueue;
     ALLEGRO_FONT *pongFont ;
